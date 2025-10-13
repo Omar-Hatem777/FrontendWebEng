@@ -1,3 +1,19 @@
+window.addEventListener('DOMContentLoaded', function () {
+    document.getElementById('email').value = '';
+    document.getElementById('password').value = '';
+}); // Clear input fields on page load
+
+
+document.getElementById('togglePassword').addEventListener('click', function () { 
+    const passwordInput = document.getElementById('password');
+    const eyeIcon = document.getElementById('eyeIcon');
+    const isPasswordVisible = passwordInput.type === 'password';
+    passwordInput.type = isPasswordVisible ? 'text' : 'password';
+    eyeIcon.className = isPasswordVisible ? 'fa-solid fa-eye' : 'fa-solid fa-eye-slash';
+
+}); // Toggle password visibility
+
+
 let loginEmail = document.getElementById('email');
 let loginPassword = document.getElementById('password');
 
@@ -6,6 +22,9 @@ async function login(event) {
 
     const email = loginEmail.value.trim();
     const password = loginPassword.value.trim();
+    const loginError = document.getElementById('loginError');
+    loginError.style.display = 'none';
+    loginError.textContent = '';
 
     const body = {
         email: email,
@@ -25,26 +44,26 @@ async function login(event) {
         console.log("Full API response:", data);
 
         if (response.ok && data.token) {
-            // ✅ Successful login
-            console.log("✅ Login successful for:", data.displayName);
-            alert(`Welcome back, ${data.displayName}!`);
+            loginEmail.value = "";
 
-            // Save token and user info locally
-            //localStorage.setItem("token", data.token);
+            loginPassword.value = "";
+
+            console.log("Login successful for:", data.displayName);
+
             localStorage.setItem("userEmail", data.email);
+
             localStorage.setItem("displayName", data.displayName);
 
-            loginEmail.value = "";
-            loginPassword.value = "";
-            // Redirect to dashboard or home
             window.location.href = "/index.html";
-        } else {
-            // ❌ Backend didn’t return a token (login failed)
-            alert("Invalid email or password.");
+        }
+        else
+        {
+            loginError.textContent = "User not found.";
+            
+            loginError.style.display = 'block';
         }
 
     } catch (error) {
         console.error("Error connecting to API:", error);
-        alert("Server error. Please try again later.");
     }
 }

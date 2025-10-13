@@ -51,12 +51,12 @@
                         </span>
                         <input type="password" class="form-control bg-dark text-light border-0" id="password"
                             placeholder="Enter your password" required>
-                        <span class="input-group-text bg-dark border-0 text-secondary">
-                            <i class="fa-solid fa-eye-slash"></i>
+                        <span class="input-group-text bg-dark border-0 text-secondary" id="togglePassword" style="cursor:pointer;">
+                            <i class="fa-solid fa-eye-slash" id="eyeIcon"></i>
                         </span>
                     </div>
                 </div>
-
+                <div id="loginError" class="text-danger mt-2 mb-3" style="display:none;"></div>
                 <button type="submit" class="btn btn-info w-100 fw-bold py-2 mb-4" onclick="login(event)">Get Started</button>
             </form>
 

@@ -40,6 +40,7 @@
                         <input type="text" class="form-control bg-dark text-light border-0" id="username"
                             placeholder="Enter your username" required>
                     </div>
+                    <div id="UserNameError" class="text-danger mt-2 mb-3" style="display:none;"></div>
                 </div>
 
                 <!-- Email -->
@@ -52,6 +53,7 @@
                         <input type="email" class="form-control bg-dark text-light border-0" id="email"
                             placeholder="Enter your email" required>
                     </div>
+                    <div id="EmailError" class="text-danger mt-2 mb-3" style="display:none;"></div>
                 </div>
 
                 <div class="mb-3">
@@ -63,6 +65,7 @@
                         <input type="email" class="form-control bg-dark text-light border-0" id="phone" placeholder="Enter your phone number"
                             required>
                     </div>
+                    <div id="PhoneError" class="text-danger mt-2 mb-3" style="display:none;"></div>
                 </div>
 
                 <!-- Password -->
@@ -74,10 +77,11 @@
                         </span>
                         <input type="password" class="form-control bg-dark text-light border-0" id="password"
                             placeholder="Enter your password" required>
-                        <span class="input-group-text bg-dark border-0 text-secondary">
-                            <i class="fa-solid fa-eye-slash"></i>
+                        <span class="input-group-text bg-dark border-0 text-secondary" id="togglePassword" style="cursor:pointer;">
+                            <i class="fa-solid fa-eye-slash" id="eyeIcon"></i>
                         </span>
                     </div>
+                    <div id="PasswordError" class="text-danger mt-2 mb-3" style="display:none;"></div>
                 </div>
 
                 <!-- Button -->
@@ -86,7 +90,7 @@
                 <!-- Link -->
                 <div class="text-center">
                     <a href="/Auth/Login/Login.html" class="text-info text-decoration-none small">
-                        Already have an account? Sign in!
+                        Already have an account? <span class="fw-semibold">Sign in!</span>
                     </a>
                 </div>
 
