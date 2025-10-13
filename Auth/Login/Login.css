@@ -1,0 +1,79 @@
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #0f0f10;
+    color: #fff;
+    overflow: hidden;
+}
+
+/* Background gradient */
+.background-dark {
+    position: fixed;
+    inset: 0;
+    background: radial-gradient(circle at top, #1a1a1c, #0d0d0e 70%);
+    z-index: -1;
+}
+
+/* Login card */
+.login-card {
+    width: 400px;
+    border-radius: 20px;
+    background: rgba(25, 25, 26, 0.95);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    padding: 2.5rem;
+}
+
+/* Icon box */
+.icon-box {
+    background: linear-gradient(135deg, #00bcd4, #007bff);
+    width: 55px;
+    height: 55px;
+    border-radius: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    box-shadow: 0 0 12px rgba(0, 188, 212, 0.6);
+}
+
+/* Inputs */
+.input-group-text {
+    border-radius: 10px 0 0 10px;
+    padding: 0.6rem 0.9rem;
+}
+
+.form-control {
+    border-radius: 0 10px 10px 0;
+    transition: 0.3s;
+    padding: 0.6rem 0.9rem;
+}
+
+.form-control:focus {
+    box-shadow: 0 0 8px #00bcd4;
+    border: none;
+    outline: none;
+}
+
+/* Button */
+.btn-info {
+    background: linear-gradient(135deg, #00bcd4, #007bff);
+    border: none;
+    border-radius: 10px;
+    transition: all 0.3s;
+    font-size: 1rem;
+    letter-spacing: 0.3px;
+}
+
+.btn-info:hover {
+    background: linear-gradient(135deg, #0097a7, #0056b3);
+}
+
+/* Text links */
+a {
+    transition: color 0.3s;
+}
+
+a:hover {
+    color: #00bcd4;
+    text-decoration: underline;
+}

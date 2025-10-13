@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dark Mode Login</title>
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="/CSS/bootstrap.min.css">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/Auth/Login/Login.css">
+</head>
+
+<body>
+
+    <!-- Background -->
+    <div class="background-dark"></div>
+
+    <!-- Login Container -->
+    <div class="container d-flex align-items-center justify-content-center vh-100">
+        <div class="card shadow-lg p-5 text-light login-card">
+            <div class="icon-box mx-auto mb-4">
+                <i class="fa-solid fa-right-to-bracket fa-lg"></i>
+            </div>
+
+            <h4 class="text-center mb-3 fw-bold">Welcome back!</h4>
+
+
+            <form>
+                <div class="mb-4">
+                    <label for="email" class="form-label">Email</label>
+                    <div class="input-group">
+                        <span class="input-group-text bg-dark border-0 text-secondary">
+                            <i class="fa-solid fa-envelope"></i>
+                        </span>
+                        <input type="email" class="form-control bg-dark text-light border-0" id="email"
+                            placeholder="Enter your email" required>
+                    </div>
+                </div>
+
+                <div class="mb-4">
+                    <label for="password" class="form-label">Password</label>
+                    <div class="input-group">
+                        <span class="input-group-text bg-dark border-0 text-secondary">
+                            <i class="fa-solid fa-lock"></i>
+                        </span>
+                        <input type="password" class="form-control bg-dark text-light border-0" id="password"
+                            placeholder="Enter your password" required>
+                        <span class="input-group-text bg-dark border-0 text-secondary">
+                            <i class="fa-solid fa-eye-slash"></i>
+                        </span>
+                    </div>
+                </div>
+
+                <button type="submit" class="btn btn-info w-100 fw-bold py-2 mb-4" onclick="login(event)">Get Started</button>
+            </form>
+
+            <div class="text-center">
+                <a href="/Auth/Signup/Signup.html" class="text-info text-decoration-none small">
+                    Don’t have an account? <span class="fw-semibold">Sign up!</span>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="/JS/bootstrap.bundle.min.js"></script>
+    <script src="/Auth/Login/Login.js"></script>
+</body>
+
+</html>
