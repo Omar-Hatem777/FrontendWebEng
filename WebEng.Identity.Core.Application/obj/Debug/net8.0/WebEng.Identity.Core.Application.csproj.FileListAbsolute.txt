@@ -1,0 +1,16 @@
+D:\Web project\Identity\WebEng.Identity.Core.Application\bin\Debug\net8.0\WebEng.Identity.Core.Application.deps.json
+D:\Web project\Identity\WebEng.Identity.Core.Application\bin\Debug\net8.0\WebEng.Identity.Core.Application.dll
+D:\Web project\Identity\WebEng.Identity.Core.Application\bin\Debug\net8.0\WebEng.Identity.Core.Application.pdb
+D:\Web project\Identity\WebEng.Identity.Core.Application\bin\Debug\net8.0\WebEng.Identity.Core.Domain.dll
+D:\Web project\Identity\WebEng.Identity.Core.Application\bin\Debug\net8.0\WebEng.Identity.Core.Domain.pdb
+D:\Web project\Identity\WebEng.Identity.Core.Application\obj\Debug\net8.0\WebEng.Identity.Core.Application.csproj.AssemblyReference.cache
+D:\Web project\Identity\WebEng.Identity.Core.Application\obj\Debug\net8.0\WebEng.Identity.Core.Application.GeneratedMSBuildEditorConfig.editorconfig
+D:\Web project\Identity\WebEng.Identity.Core.Application\obj\Debug\net8.0\WebEng.Identity.Core.Application.AssemblyInfoInputs.cache
+D:\Web project\Identity\WebEng.Identity.Core.Application\obj\Debug\net8.0\WebEng.Identity.Core.Application.AssemblyInfo.cs
+D:\Web project\Identity\WebEng.Identity.Core.Application\obj\Debug\net8.0\WebEng.Identity.Core.Application.csproj.CoreCompileInputs.cache
+D:\Web project\Identity\WebEng.Identity.Core.Application\obj\Debug\net8.0\WebEng.Identity.Core.Application.sourcelink.json
+D:\Web project\Identity\WebEng.Identity.Core.Application\obj\Debug\net8.0\WebEng.I.E833D811.Up2Date
+D:\Web project\Identity\WebEng.Identity.Core.Application\obj\Debug\net8.0\WebEng.Identity.Core.Application.dll
+D:\Web project\Identity\WebEng.Identity.Core.Application\obj\Debug\net8.0\refint\WebEng.Identity.Core.Application.dll
+D:\Web project\Identity\WebEng.Identity.Core.Application\obj\Debug\net8.0\WebEng.Identity.Core.Application.pdb
+D:\Web project\Identity\WebEng.Identity.Core.Application\obj\Debug\net8.0\ref\WebEng.Identity.Core.Application.dll

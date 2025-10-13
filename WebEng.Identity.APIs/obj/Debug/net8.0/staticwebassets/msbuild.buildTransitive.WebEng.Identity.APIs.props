@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="..\buildMultiTargeting\WebEng.Identity.APIs.props" />
+</Project>

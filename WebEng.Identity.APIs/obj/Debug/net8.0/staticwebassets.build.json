@@ -1,0 +1,12 @@
+{
+  "Version": 1,
+  "Hash": "VTGGuHRHg0eZ6xJpvhlrKPSPMw9dfK140nwKZAee6Fg=",
+  "Source": "WebEng.Identity.APIs",
+  "BasePath": "_content/WebEng.Identity.APIs",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": [],
+  "Endpoints": []
+}
