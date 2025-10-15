@@ -11,7 +11,7 @@ namespace WebEng.Identity.Core.Domain.Entities
     {
         public string FirstName { get; set; } = null!;
 
-        public List<RefreshToken>? RefreshTokens { get; set; }
+        public List<RefreshToken>? RefreshTokens { get; set; } = new();
 
     }
 }

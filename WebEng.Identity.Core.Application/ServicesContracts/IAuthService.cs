@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Http;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Security.Claims;
@@ -10,10 +11,17 @@ namespace WebEng.Identity.Core.Application.ServicesContracts
 {
     public interface IAuthService
     {
-        Task<UserDto> LoginAsync(LoginDto model);
+        Task<UserDto> LoginAsync(LoginDto model, HttpResponse response);
 
-        Task<UserDto> RegisterAsync(RegisterDto model);
+        Task<UserDto> RegisterAsync(RegisterDto model, HttpResponse response);
 
-        Task<UserDto> GetCurrentUser(ClaimsPrincipal claimsPrincipal);
+        Task<UserDto> GetCurrentUser(ClaimsPrincipal claimsPrincipal, HttpResponse);
+
+        Task<UserDto> RefreshTokenAsync(HttpRequest request, HttpResponse response);
+
+        Task<bool> RevokeTokenAsync(HttpRequest request, HttpResponse response);
+
+        Task LogoutAsync(HttpRequest request, HttpResponse response);
+
     }
 }

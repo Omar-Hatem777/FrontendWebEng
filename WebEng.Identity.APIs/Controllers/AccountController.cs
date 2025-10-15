@@ -24,14 +24,14 @@ namespace LinkDev.Talabat.APIs.Controllers.Controllers.Account
         [HttpPost("register")] // POST: /api/account/register
         public async Task<ActionResult<UserDto>> Register(RegisterDto model)
         {
-            var result = await _authService.RegisterAsync(model);
+            var result = await _authService.RegisterAsync(model, Response);
             return Ok(result);
         }
 
         [HttpPost("login")] // POST: /api/account/login
         public async Task<ActionResult<UserDto>> Login(LoginDto model)
         {
-            var result = await _authService.LoginAsync(model);
+            var result = await _authService.LoginAsync(model, Response);
             return Ok(result);
         }
 
@@ -39,9 +39,11 @@ namespace LinkDev.Talabat.APIs.Controllers.Controllers.Account
         [HttpGet] // GET: /api/account
         public async Task<ActionResult<UserDto>> GetCurrentUser()
         {
-            var result = await _authService.GetCurrentUser(User);
+            var result = await _authService.GetCurrentUser(User, Response);
             return Ok(result);
         }
+
+
 
       
     }

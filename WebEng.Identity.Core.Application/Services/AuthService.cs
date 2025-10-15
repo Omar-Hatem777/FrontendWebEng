@@ -1,10 +1,13 @@
-﻿using Microsoft.AspNetCore.Identity;
+﻿using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
 using System;
 using System.Collections.Generic;
 using System.IdentityModel.Tokens.Jwt;
 using System.Linq;
+using System.Runtime.ConstrainedExecution;
 using System.Security.Claims;
 using System.Security.Cryptography;
 using System.Text;
@@ -31,7 +34,7 @@ namespace WebEng.Identity.Core.Application.Services
             _jwtSettingsValue = _jwtSettings.Value;
         }
 
-        public async Task<UserDto> RegisterAsync(RegisterDto model)
+        public async Task<UserDto> RegisterAsync(RegisterDto model, HttpResponse response)
         {
             var user = new User()
             {
@@ -47,7 +50,12 @@ namespace WebEng.Identity.Core.Application.Services
                 throw new ValidationException() { Errors = result.Errors.Select(e => e.Description).ToArray() };
 
 
-            RefreshToken refreshToken = await GenerateRefreshTokenAsync();
+            RefreshToken refreshToken = GenerateRefreshToken();
+            user.RefreshTokens.Add(refreshToken);
+            _userManager.UpdateAsync(user);
+
+            SetRefreshTokenCookie(response, refreshToken.Token, refreshToken.ExpiresOn);
+
 
             return new UserDto()
             {
@@ -60,7 +68,7 @@ namespace WebEng.Identity.Core.Application.Services
             };
         }
 
-        public async Task<UserDto> LoginAsync(LoginDto model)
+        public async Task<UserDto> LoginAsync(LoginDto model, HttpResponse response)
         {
             var user = await _userManager.FindByEmailAsync(model.Email);
 
@@ -78,7 +86,12 @@ namespace WebEng.Identity.Core.Application.Services
             if (!result.Succeeded)
                 throw new UnAuthorizedException("Invalid Login.");
 
-            RefreshToken refreshToken = await GenerateRefreshTokenAsync();
+            RefreshToken refreshToken = GenerateRefreshToken();
+            user.RefreshTokens.Add(refreshToken);
+            await _userManager.UpdateAsync(user);
+
+            SetRefreshTokenCookie(response, refreshToken.Token, refreshToken.ExpiresOn);
+
 
             return new UserDto()
             {
@@ -91,12 +104,10 @@ namespace WebEng.Identity.Core.Application.Services
             };
         }
 
-        public async Task<UserDto> GetCurrentUser(ClaimsPrincipal claimsPrincipal)
+        public async Task<UserDto> GetCurrentUser(ClaimsPrincipal claimsPrincipal, HttpResponse response)
         {
             var email = claimsPrincipal.FindFirstValue(ClaimTypes.Email);
             var user = await _userManager.FindByEmailAsync(email!);
-
-            RefreshToken refreshToken = await GenerateRefreshTokenAsync();
 
             return new UserDto()
             {
@@ -104,9 +115,84 @@ namespace WebEng.Identity.Core.Application.Services
                 Email = user.Email!,
                 DisplayName = user.FirstName,
                 Token = await GenerateTokenAsync(user),
-                RefreshToken = refreshToken.Token,
-                RefreshTokenExpiration = refreshToken.ExpiresOn
             };
+        }
+
+        public async Task<bool> RevokeTokenAsync(HttpRequest request, HttpResponse response)
+        {
+
+            var token = request.Cookies["refreshToken"];
+            if (string.IsNullOrEmpty(token))
+                return false;
+
+            var user = await _userManager.Users.Include(u => u.RefreshTokens).FirstOrDefaultAsync(u => u.RefreshTokens.Any(t => t.Token == token));
+
+            if (user is null)
+                return false;
+
+            var refreshToken = user.RefreshTokens.SingleOrDefault(t => t.Token == token);
+
+            if (refreshToken is null || !refreshToken.IsActive)
+                return false;
+
+            refreshToken.RevokedOn = DateTime.UtcNow;
+            await _userManager.UpdateAsync(user);
+
+            response.Cookies.Delete("refreshToken");
+
+
+            return true;
+
+        }
+
+        public async Task<UserDto> RefreshTokenAsync(HttpRequest request, HttpResponse response)
+        {
+
+            var token = request.Cookies["refreshToken"];
+
+            if (string.IsNullOrEmpty(token))
+                throw new UnAuthorizedException("Refresh token is required.");
+
+            var user = await _userManager.Users.Include(u => u.RefreshTokens).FirstOrDefaultAsync(u => u.RefreshTokens.Any(t => t.Token == token));
+
+            if (user is null)
+                throw new UnAuthorizedException("Invalid token.");
+
+            var refreshToken = user.RefreshTokens.Single(t => t.Token == token);
+
+            if (!refreshToken.IsActive)
+                throw new UnAuthorizedException("Inactive token.");
+
+            refreshToken.RevokedOn = DateTime.UtcNow;
+
+            var newRefreshToken = GenerateRefreshToken();
+            user.RefreshTokens.Add(newRefreshToken);
+            await _userManager.UpdateAsync(user);
+
+            await RemoveOldRefreshTokens(user);
+
+            SetRefreshTokenCookie(response, newRefreshToken.Token, newRefreshToken.ExpiresOn);
+
+
+            return new UserDto()
+            {
+                Id = user.Id,
+                DisplayName = user.FirstName,
+                Email = user.Email!,
+                Token = await GenerateTokenAsync(user),
+                RefreshToken = newRefreshToken.Token,
+                RefreshTokenExpiration = newRefreshToken.ExpiresOn
+            };
+        }
+
+        public async Task LogoutAsync(HttpRequest request, HttpResponse response)
+        {
+            var token = request.Cookies["refreshToken"];
+
+            if (!string.IsNullOrEmpty(token))
+                await RevokeTokenAsync(request, response);
+
+            response.Cookies.Delete("refreshToken");
         }
 
         private async Task<string> GenerateTokenAsync(User user)
@@ -141,7 +227,7 @@ namespace WebEng.Identity.Core.Application.Services
             return new JwtSecurityTokenHandler().WriteToken(token);
         }
    
-        private async Task<RefreshToken> GenerateRefreshTokenAsync()
+        private RefreshToken GenerateRefreshToken()
         {
             var randomBytes = new byte[64]; 
             RandomNumberGenerator.Fill(randomBytes);
@@ -153,5 +239,28 @@ namespace WebEng.Identity.Core.Application.Services
                 CreatedOn = DateTime.UtcNow,
             };
         }
+
+
+        private async Task RemoveOldRefreshTokens(User user)
+        {
+            user.RefreshTokens.RemoveAll(t => !t.IsActive);
+            await _userManager.UpdateAsync(user);
+        }
+
+        private void SetRefreshTokenCookie(HttpResponse response, string refreshToken, DateTime expires)
+        {
+            var cookieOptions = new CookieOptions
+            {
+                HttpOnly = true,                  
+                Expires = expires,
+                Secure = true,                      
+                SameSite = SameSiteMode.Strict,
+                Path = "/"
+            };
+
+            response.Cookies.Append("refreshToken", refreshToken, cookieOptions);
+        }
+
+
     }
 }
