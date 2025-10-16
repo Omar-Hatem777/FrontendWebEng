@@ -15,7 +15,7 @@ namespace WebEng.Identity.Core.Application.ServicesContracts
 
         Task<UserDto> RegisterAsync(RegisterDto model, HttpResponse response);
 
-        Task<UserDto> GetCurrentUser(ClaimsPrincipal claimsPrincipal, HttpResponse response);
+        Task<UserDto> GetCurrentUser(ClaimsPrincipal claimsPrincipal, HttpRequest request);
 
         Task<UserDto> RefreshTokenAsync(HttpRequest request, HttpResponse response);
 

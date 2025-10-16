@@ -113,6 +113,18 @@
         }
       }
     },
+    "/api/Account/refresh": {
+      "post": {
+        "tags": [
+          "Account"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
     "/api/Account": {
       "get": {
         "tags": [

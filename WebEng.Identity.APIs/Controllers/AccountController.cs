@@ -43,13 +43,19 @@ namespace LinkDev.Talabat.APIs.Controllers.Controllers.Account
             return Ok(new { message = "Logged out successfully" });
         }
 
+        [HttpPost("refresh")]
+        public async Task<ActionResult> Refresh()
+        {
+            var userDto = await _authService.RefreshTokenAsync(Request, Response);
+            return Ok(userDto);
+        }
 
 
         [Authorize]
         [HttpGet] // GET: /api/account
         public async Task<ActionResult<UserDto>> GetCurrentUser()
         {
-            var result = await _authService.GetCurrentUser(User, Response);
+            var result = await _authService.GetCurrentUser(User, Request);
             return Ok(result);
         }
 

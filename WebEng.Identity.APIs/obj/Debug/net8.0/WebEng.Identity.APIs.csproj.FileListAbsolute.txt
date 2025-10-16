@@ -156,10 +156,10 @@ D:\Web project\Identity\WebEng.Identity.APIs\obj\Debug\net8.0\staticwebassets\ms
 D:\Web project\Identity\WebEng.Identity.APIs\obj\Debug\net8.0\staticwebassets\msbuild.buildMultiTargeting.WebEng.Identity.APIs.props
 D:\Web project\Identity\WebEng.Identity.APIs\obj\Debug\net8.0\staticwebassets\msbuild.buildTransitive.WebEng.Identity.APIs.props
 D:\Web project\Identity\WebEng.Identity.APIs\obj\Debug\net8.0\staticwebassets.pack.json
-D:\Web project\Identity\WebEng.Identity.APIs\obj\Debug\net8.0\staticwebassets.upToDateCheck.txt
 D:\Web project\Identity\WebEng.Identity.APIs\obj\Debug\net8.0\WebEng.I.D43F70A1.Up2Date
 D:\Web project\Identity\WebEng.Identity.APIs\obj\Debug\net8.0\WebEng.Identity.APIs.dll
 D:\Web project\Identity\WebEng.Identity.APIs\obj\Debug\net8.0\refint\WebEng.Identity.APIs.dll
 D:\Web project\Identity\WebEng.Identity.APIs\obj\Debug\net8.0\WebEng.Identity.APIs.pdb
 D:\Web project\Identity\WebEng.Identity.APIs\obj\Debug\net8.0\WebEng.Identity.APIs.genruntimeconfig.cache
 D:\Web project\Identity\WebEng.Identity.APIs\obj\Debug\net8.0\ref\WebEng.Identity.APIs.dll
+D:\Web project\Identity\WebEng.Identity.APIs\obj\Debug\net8.0\staticwebassets.upToDateCheck.txt

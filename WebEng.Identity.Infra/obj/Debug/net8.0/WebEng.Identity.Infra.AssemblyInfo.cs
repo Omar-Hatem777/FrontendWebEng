@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("WebEng.Identity.Infra")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+f2dce95a2e2ef3e81095c91cb5ec06a86ebe6750")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+4570604cd03170ac7781b072cb12691832fa1c41")]
 [assembly: System.Reflection.AssemblyProductAttribute("WebEng.Identity.Infra")]
 [assembly: System.Reflection.AssemblyTitleAttribute("WebEng.Identity.Infra")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

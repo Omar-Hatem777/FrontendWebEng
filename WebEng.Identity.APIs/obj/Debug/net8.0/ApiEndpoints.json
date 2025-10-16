@@ -57,6 +57,16 @@
   },
   {
     "ContainingType": "LinkDev.Talabat.APIs.Controllers.Controllers.Account.AccountController",
+    "Method": "Refresh",
+    "RelativePath": "api/Account/refresh",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "LinkDev.Talabat.APIs.Controllers.Controllers.Account.AccountController",
     "Method": "Register",
     "RelativePath": "api/Account/register",
     "HttpMethod": "POST",

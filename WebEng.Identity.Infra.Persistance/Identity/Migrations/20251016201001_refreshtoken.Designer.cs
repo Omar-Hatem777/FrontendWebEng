@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using WebEng.Identity.Infra.Persistance.Identity;
 
@@ -11,9 +12,11 @@ using WebEng.Identity.Infra.Persistance.Identity;
 namespace WebEng.Identity.Infra.Persistance.Identity.Migrations
 {
     [DbContext(typeof(WebEngIdentityDbContext))]
-    partial class WebEngIdentityDbContextModelSnapshot : ModelSnapshot
+    [Migration("20251016201001_refreshtoken")]
+    partial class refreshtoken
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
