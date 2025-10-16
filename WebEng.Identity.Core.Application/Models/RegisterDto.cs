@@ -23,7 +23,7 @@ namespace WebEng.Identity.Core.Application.Models
         public required string PhoneNumber { get; set; }
 
         [Required]
-        [RegularExpression("^(?=.*\\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*()_+{}|:\"<>?,./;'[\\]\\\\])(?!.*\\s).{6,}$",
+        [RegularExpression(@"^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*()_+{}|:""<>?,./;'\[\]\\`~\-=]).{6,}$",
             ErrorMessage = "Password Must have 1 Uppercase, 1 Lowercase, 1 number, 1 non alphanumeric and at least 6 characters")]
         public required string Password { get; set; }
 

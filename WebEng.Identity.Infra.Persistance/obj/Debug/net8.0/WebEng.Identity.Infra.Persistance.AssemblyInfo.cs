@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("WebEng.Identity.Infra.Persistance")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+c892bfc6c3db5e0239063ab06fbbd368861420eb")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+f2dce95a2e2ef3e81095c91cb5ec06a86ebe6750")]
 [assembly: System.Reflection.AssemblyProductAttribute("WebEng.Identity.Infra.Persistance")]
 [assembly: System.Reflection.AssemblyTitleAttribute("WebEng.Identity.Infra.Persistance")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
