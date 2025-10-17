@@ -49,7 +49,7 @@ namespace WebEng.Identity.Core.Application.Services
             if (!result.Succeeded)
                 throw new ValidationException() { Errors = result.Errors.Select(e => e.Description).ToArray() };
 
-
+            await _userManager.AddToRoleAsync(user, "User");
             RefreshToken refreshToken = GenerateRefreshToken();
             user.RefreshTokens.Add(refreshToken);
             await _userManager.UpdateAsync(user);
@@ -62,7 +62,6 @@ namespace WebEng.Identity.Core.Application.Services
                 DisplayName = user.FirstName,
                 Email = user.Email!,
                 Token = await GenerateTokenAsync(user),
-                RefreshToken = refreshToken.Token,
                 RefreshTokenExpiration = refreshToken.ExpiresOn
             };
         }
@@ -98,7 +97,6 @@ namespace WebEng.Identity.Core.Application.Services
                 DisplayName = user.FirstName,
                 Email = user.Email!,
                 Token = await GenerateTokenAsync(user),
-                RefreshToken = refreshToken.Token,
                 RefreshTokenExpiration = refreshToken.ExpiresOn
             };
         }
@@ -176,7 +174,6 @@ namespace WebEng.Identity.Core.Application.Services
                 DisplayName = user.FirstName,
                 Email = user.Email!,
                 Token = jwt,
-                RefreshToken = refreshToken.Token,
                 RefreshTokenExpiration = refreshToken.ExpiresOn
             };
         }
