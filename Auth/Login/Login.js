@@ -54,6 +54,10 @@ async function login(event) {
 
             localStorage.setItem("displayName", data.displayName);
 
+            // Store the token for authentication
+            localStorage.setItem("token", data.token);
+            localStorage.setItem("accessToken", data.token);
+
             window.location.href = "/index.html";
         }
         else
