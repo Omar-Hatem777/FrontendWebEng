@@ -14,8 +14,5 @@ namespace WebEng.Identity.Core.Application.ServicesContracts
 
         Task<UserDto> GetUserById(string id);
 
-        Task<int> DeleteUserById(int id);
-
-        Task DeleteAllUsers();
     }
 }

@@ -20,66 +20,46 @@ namespace WebEng.Identity.Core.Application.Services
             _userManager = userManager;
         }
 
-        public async Task DeleteAllUsers()
+        public async Task<List<UserDto>> GetAllUsers()
         {
             var users = await _userManager.Users.ToListAsync();
 
+            var userDtos = new List<UserDto>();
+
             foreach (var user in users)
             {
-                var result = await _userManager.DeleteAsync(user);
-                if (!result.Succeeded)
+                var roles = await _userManager.GetRolesAsync(user);
+
+                userDtos.Add(new UserDto
                 {
-                    var errors = string.Join("; ", result.Errors.Select(e => $"{e.Code}: {e.Description}"));
-                    throw new InvalidOperationException($"Failed to delete user {user.Id}: {errors}");
-                }
-            }
-        }
-
-        public async Task<int> DeleteUserById(int id)
-        {
-            var user = await _userManager.Users
-        .FirstOrDefaultAsync(u => u.Id == id.ToString());
-
-            if (user == null)
-                return 0;
-
-            var result = await _userManager.DeleteAsync(user);
-            if (!result.Succeeded)
-            {
-                var errors = string.Join("; ", result.Errors.Select(e => $"{e.Code}: {e.Description}"));
-                throw new InvalidOperationException($"Failed to delete user {user.Id}: {errors}");
+                    Id = user.Id,
+                    DisplayName = user.FirstName,
+                    Email = user.Email,
+                    Roles = roles.ToList(),
+                    RefreshTokenExpiration = user.RefreshTokens[user.RefreshTokens.Count-1].ExpiresOn,
+                });
             }
 
-            return 1;
-        }
-
-        public async Task<List<UserDto>> GetAllUsers()
-        {
-            var users = await _userManager.Users.Select(
-                u => new UserDto
-                {
-                    Id = u.Id,
-                    DisplayName = u.FirstName,
-                    Email = u.Email
-                }
-                )
-                .ToListAsync();
-
-            return users;
+            return userDtos;
         }
 
         public async Task<UserDto> GetUserById(string id)
         {
-            var user = await _userManager.Users
-                .Where(u => u.Id==id)
-                .Select(
-                u => new UserDto {
-                    Id = u.Id,
-                    DisplayName = u.FirstName,
-                    Email = u.Email
-                })
-                .FirstOrDefaultAsync();
-            return user;
+            var user = await _userManager.FindByIdAsync(id);
+
+            if (user == null)
+                return null;
+
+            var roles = await _userManager.GetRolesAsync(user);
+
+            return new UserDto
+            {
+                Id = user.Id,
+                DisplayName = user.FirstName,
+                Email = user.Email,
+                RefreshTokenExpiration = user.RefreshTokens.LastOrDefault()?.ExpiresOn,
+                Roles = roles.ToList()
+            };
         }
     }
 }

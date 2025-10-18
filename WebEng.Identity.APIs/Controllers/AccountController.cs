@@ -44,7 +44,7 @@ namespace LinkDev.Talabat.APIs.Controllers.Controllers.Account
         }
 
         [HttpPost("refresh")]
-        public async Task<ActionResult> Refresh()
+        public async Task<ActionResult<UserDto>> Refresh()
         {
             var userDto = await _authService.RefreshTokenAsync(Request, Response);
             return Ok(userDto);

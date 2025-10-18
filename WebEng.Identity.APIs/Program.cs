@@ -1,4 +1,4 @@
-
+﻿
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
@@ -16,6 +16,7 @@ namespace WebEng.Identity.APIs
 {
     public class Program
     {
+        
         public static void Main(string[] args)
         {
             var builder = WebApplication.CreateBuilder(args);
@@ -26,6 +27,18 @@ namespace WebEng.Identity.APIs
             
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
+
+            builder.Services.AddCors(options =>
+            {
+                options.AddPolicy("AllowFrontend", policy =>
+                {
+                    policy.WithOrigins("http://127.0.0.1:5502")
+                          .AllowAnyHeader()
+                          .AllowAnyMethod()
+                          .AllowCredentials();
+                    
+                });
+            });
 
             #region DB Connection DI
             builder.Services.AddDbContext<WebEngIdentityDbContext>((optionsBuilder) =>
@@ -95,7 +108,11 @@ namespace WebEng.Identity.APIs
                 app.UseSwaggerUI();
             }
 
-            app.UseHttpsRedirection();
+
+            //app.UseHttpsRedirection();
+
+            app.UseCors("AllowFrontend");
+
 
             app.UseAuthentication();
 

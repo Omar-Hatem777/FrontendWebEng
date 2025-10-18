@@ -7,48 +7,56 @@
       "RelativeMoniker": "D:0:0:{D31F0505-9CA4-414F-8F66-0A6E49FD8B5B}|WebEng.Identity.Core.Application\\WebEng.Identity.Core.Application.csproj|solutionrelative:webeng.identity.core.application\\services\\authservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{D31F0505-9CA4-414F-8F66-0A6E49FD8B5B}|WebEng.Identity.Core.Application\\WebEng.Identity.Core.Application.csproj|d:\\web project\\identity\\webeng.identity.core.application\\services\\adminservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{D31F0505-9CA4-414F-8F66-0A6E49FD8B5B}|WebEng.Identity.Core.Application\\WebEng.Identity.Core.Application.csproj|solutionrelative:webeng.identity.core.application\\services\\adminservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{8D1EE46C-20DE-4AFB-81BB-14B03266CB14}|WebEng.Identity.APIs\\WebEng.Identity.APIs.csproj|d:\\web project\\identity\\webeng.identity.apis\\controllers\\admincontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{8D1EE46C-20DE-4AFB-81BB-14B03266CB14}|WebEng.Identity.APIs\\WebEng.Identity.APIs.csproj|solutionrelative:webeng.identity.apis\\controllers\\admincontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{8D1EE46C-20DE-4AFB-81BB-14B03266CB14}|WebEng.Identity.APIs\\WebEng.Identity.APIs.csproj|d:\\web project\\identity\\webeng.identity.apis\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8D1EE46C-20DE-4AFB-81BB-14B03266CB14}|WebEng.Identity.APIs\\WebEng.Identity.APIs.csproj|solutionrelative:webeng.identity.apis\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{8D1EE46C-20DE-4AFB-81BB-14B03266CB14}|WebEng.Identity.APIs\\WebEng.Identity.APIs.csproj|d:\\web project\\identity\\webeng.identity.apis\\controllers\\accountcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{8D1EE46C-20DE-4AFB-81BB-14B03266CB14}|WebEng.Identity.APIs\\WebEng.Identity.APIs.csproj|solutionrelative:webeng.identity.apis\\controllers\\accountcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{D31F0505-9CA4-414F-8F66-0A6E49FD8B5B}|WebEng.Identity.Core.Application\\WebEng.Identity.Core.Application.csproj|d:\\web project\\identity\\webeng.identity.core.application\\servicescontracts\\iadminservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{D31F0505-9CA4-414F-8F66-0A6E49FD8B5B}|WebEng.Identity.Core.Application\\WebEng.Identity.Core.Application.csproj|solutionrelative:webeng.identity.core.application\\servicescontracts\\iadminservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{D31F0505-9CA4-414F-8F66-0A6E49FD8B5B}|WebEng.Identity.Core.Application\\WebEng.Identity.Core.Application.csproj|d:\\web project\\identity\\webeng.identity.core.application\\services\\adminservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D31F0505-9CA4-414F-8F66-0A6E49FD8B5B}|WebEng.Identity.Core.Application\\WebEng.Identity.Core.Application.csproj|solutionrelative:webeng.identity.core.application\\services\\adminservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{D31F0505-9CA4-414F-8F66-0A6E49FD8B5B}|WebEng.Identity.Core.Application\\WebEng.Identity.Core.Application.csproj|d:\\web project\\identity\\webeng.identity.core.application\\servicescontracts\\iauthservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{D31F0505-9CA4-414F-8F66-0A6E49FD8B5B}|WebEng.Identity.Core.Application\\WebEng.Identity.Core.Application.csproj|solutionrelative:webeng.identity.core.application\\servicescontracts\\iauthservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{D31F0505-9CA4-414F-8F66-0A6E49FD8B5B}|WebEng.Identity.Core.Application\\WebEng.Identity.Core.Application.csproj|d:\\web project\\identity\\webeng.identity.core.application\\models\\userdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{D31F0505-9CA4-414F-8F66-0A6E49FD8B5B}|WebEng.Identity.Core.Application\\WebEng.Identity.Core.Application.csproj|solutionrelative:webeng.identity.core.application\\models\\userdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{D31F0505-9CA4-414F-8F66-0A6E49FD8B5B}|WebEng.Identity.Core.Application\\WebEng.Identity.Core.Application.csproj|d:\\web project\\identity\\webeng.identity.core.application\\models\\registerdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{D31F0505-9CA4-414F-8F66-0A6E49FD8B5B}|WebEng.Identity.Core.Application\\WebEng.Identity.Core.Application.csproj|solutionrelative:webeng.identity.core.application\\models\\registerdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{D31F0505-9CA4-414F-8F66-0A6E49FD8B5B}|WebEng.Identity.Core.Application\\WebEng.Identity.Core.Application.csproj|d:\\web project\\identity\\webeng.identity.core.application\\models\\logindto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{D31F0505-9CA4-414F-8F66-0A6E49FD8B5B}|WebEng.Identity.Core.Application\\WebEng.Identity.Core.Application.csproj|solutionrelative:webeng.identity.core.application\\models\\logindto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{8D1EE46C-20DE-4AFB-81BB-14B03266CB14}|WebEng.Identity.APIs\\WebEng.Identity.APIs.csproj|d:\\web project\\identity\\webeng.identity.apis\\properties\\launchsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{8D1EE46C-20DE-4AFB-81BB-14B03266CB14}|WebEng.Identity.APIs\\WebEng.Identity.APIs.csproj|solutionrelative:webeng.identity.apis\\properties\\launchsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{8D1EE46C-20DE-4AFB-81BB-14B03266CB14}|WebEng.Identity.APIs\\WebEng.Identity.APIs.csproj|d:\\web project\\identity\\webeng.identity.apis\\controllers\\baseapicontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{8D1EE46C-20DE-4AFB-81BB-14B03266CB14}|WebEng.Identity.APIs\\WebEng.Identity.APIs.csproj|solutionrelative:webeng.identity.apis\\controllers\\baseapicontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{D31F0505-9CA4-414F-8F66-0A6E49FD8B5B}|WebEng.Identity.Core.Application\\WebEng.Identity.Core.Application.csproj|d:\\web project\\identity\\webeng.identity.core.application\\models\\jwtsettings.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{D31F0505-9CA4-414F-8F66-0A6E49FD8B5B}|WebEng.Identity.Core.Application\\WebEng.Identity.Core.Application.csproj|solutionrelative:webeng.identity.core.application\\models\\jwtsettings.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{D31F0505-9CA4-414F-8F66-0A6E49FD8B5B}|WebEng.Identity.Core.Application\\WebEng.Identity.Core.Application.csproj|d:\\web project\\identity\\webeng.identity.core.application\\models\\logindto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D31F0505-9CA4-414F-8F66-0A6E49FD8B5B}|WebEng.Identity.Core.Application\\WebEng.Identity.Core.Application.csproj|solutionrelative:webeng.identity.core.application\\models\\logindto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8D1EE46C-20DE-4AFB-81BB-14B03266CB14}|WebEng.Identity.APIs\\WebEng.Identity.APIs.csproj|d:\\web project\\identity\\webeng.identity.apis\\controllers\\admincontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8D1EE46C-20DE-4AFB-81BB-14B03266CB14}|WebEng.Identity.APIs\\WebEng.Identity.APIs.csproj|solutionrelative:webeng.identity.apis\\controllers\\admincontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D31F0505-9CA4-414F-8F66-0A6E49FD8B5B}|WebEng.Identity.Core.Application\\WebEng.Identity.Core.Application.csproj|d:\\web project\\identity\\webeng.identity.core.application\\servicescontracts\\iadminservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D31F0505-9CA4-414F-8F66-0A6E49FD8B5B}|WebEng.Identity.Core.Application\\WebEng.Identity.Core.Application.csproj|solutionrelative:webeng.identity.core.application\\servicescontracts\\iadminservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{8D1EE46C-20DE-4AFB-81BB-14B03266CB14}|WebEng.Identity.APIs\\WebEng.Identity.APIs.csproj|d:\\web project\\identity\\webeng.identity.apis\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
       "RelativeMoniker": "D:0:0:{8D1EE46C-20DE-4AFB-81BB-14B03266CB14}|WebEng.Identity.APIs\\WebEng.Identity.APIs.csproj|solutionrelative:webeng.identity.apis\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D31F0505-9CA4-414F-8F66-0A6E49FD8B5B}|WebEng.Identity.Core.Application\\WebEng.Identity.Core.Application.csproj|d:\\web project\\identity\\webeng.identity.core.application\\models\\userdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D31F0505-9CA4-414F-8F66-0A6E49FD8B5B}|WebEng.Identity.Core.Application\\WebEng.Identity.Core.Application.csproj|solutionrelative:webeng.identity.core.application\\models\\userdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D31F0505-9CA4-414F-8F66-0A6E49FD8B5B}|WebEng.Identity.Core.Application\\WebEng.Identity.Core.Application.csproj|d:\\web project\\identity\\webeng.identity.core.application\\servicescontracts\\iauthservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D31F0505-9CA4-414F-8F66-0A6E49FD8B5B}|WebEng.Identity.Core.Application\\WebEng.Identity.Core.Application.csproj|solutionrelative:webeng.identity.core.application\\servicescontracts\\iauthservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D31F0505-9CA4-414F-8F66-0A6E49FD8B5B}|WebEng.Identity.Core.Application\\WebEng.Identity.Core.Application.csproj|d:\\web project\\identity\\webeng.identity.core.application\\models\\registerdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D31F0505-9CA4-414F-8F66-0A6E49FD8B5B}|WebEng.Identity.Core.Application\\WebEng.Identity.Core.Application.csproj|solutionrelative:webeng.identity.core.application\\models\\registerdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D31F0505-9CA4-414F-8F66-0A6E49FD8B5B}|WebEng.Identity.Core.Application\\WebEng.Identity.Core.Application.csproj|d:\\web project\\identity\\webeng.identity.core.application\\models\\jwtsettings.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D31F0505-9CA4-414F-8F66-0A6E49FD8B5B}|WebEng.Identity.Core.Application\\WebEng.Identity.Core.Application.csproj|solutionrelative:webeng.identity.core.application\\models\\jwtsettings.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{DA8AF91B-B0C0-43F4-AB63-F3D984781082}|WebEng.Identity.Infra.Persistance\\WebEng.Identity.Infra.Persistance.csproj|d:\\web project\\identity\\webeng.identity.infra.persistance\\identity\\migrations\\20251016200121_initialcreate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -69,10 +77,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{DA8AF91B-B0C0-43F4-AB63-F3D984781082}|WebEng.Identity.Infra.Persistance\\WebEng.Identity.Infra.Persistance.csproj|d:\\web project\\identity\\webeng.identity.infra.persistance\\identity\\migrations\\webengidentitydbcontextmodelsnapshot.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{DA8AF91B-B0C0-43F4-AB63-F3D984781082}|WebEng.Identity.Infra.Persistance\\WebEng.Identity.Infra.Persistance.csproj|solutionrelative:webeng.identity.infra.persistance\\identity\\migrations\\webengidentitydbcontextmodelsnapshot.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{8D1EE46C-20DE-4AFB-81BB-14B03266CB14}|WebEng.Identity.APIs\\WebEng.Identity.APIs.csproj|d:\\web project\\identity\\webeng.identity.apis\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{8D1EE46C-20DE-4AFB-81BB-14B03266CB14}|WebEng.Identity.APIs\\WebEng.Identity.APIs.csproj|solutionrelative:webeng.identity.apis\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{D4CDA38E-559A-480F-A366-BA2E43A9FD63}|WebEng.Identity.Core.Domain\\WebEng.Identity.Core.Domain.csproj|d:\\web project\\identity\\webeng.identity.core.domain\\entities\\refreshtoken.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -98,7 +102,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 22,
+          "SelectedChildIndex": 23,
           "Children": [
             {
               "$type": "Bookmark",
@@ -118,46 +122,58 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 17,
+              "DocumentIndex": 4,
+              "Title": "launchSettings.json",
+              "DocumentMoniker": "D:\\Web project\\Identity\\WebEng.Identity.APIs\\Properties\\launchSettings.json",
+              "RelativeDocumentMoniker": "WebEng.Identity.APIs\\Properties\\launchSettings.json",
+              "ToolTip": "D:\\Web project\\Identity\\WebEng.Identity.APIs\\Properties\\launchSettings.json",
+              "RelativeToolTip": "WebEng.Identity.APIs\\Properties\\launchSettings.json",
+              "ViewState": "AgIAAAsAAAAAAAAAAAAiwBoAAAAvAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2025-10-18T15:33:28.409Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
               "Title": "Program.cs",
               "DocumentMoniker": "D:\\Web project\\Identity\\WebEng.Identity.APIs\\Program.cs",
               "RelativeDocumentMoniker": "WebEng.Identity.APIs\\Program.cs",
               "ToolTip": "D:\\Web project\\Identity\\WebEng.Identity.APIs\\Program.cs",
               "RelativeToolTip": "WebEng.Identity.APIs\\Program.cs",
-              "ViewState": "AgIAACIAAAAAAAAAAAAAACEAAABdAAAAAAAAAA==",
+              "ViewState": "AgIAAGMAAAAAAAAAAAAgwG0AAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-13T18:32:58.526Z",
-              "IsPinned": true
+              "WhenOpened": "2025-10-18T15:29:39.922Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 3,
               "Title": "AdminService.cs",
               "DocumentMoniker": "D:\\Web project\\Identity\\WebEng.Identity.Core.Application\\Services\\AdminService.cs",
               "RelativeDocumentMoniker": "WebEng.Identity.Core.Application\\Services\\AdminService.cs",
               "ToolTip": "D:\\Web project\\Identity\\WebEng.Identity.Core.Application\\Services\\AdminService.cs",
               "RelativeToolTip": "WebEng.Identity.Core.Application\\Services\\AdminService.cs",
-              "ViewState": "AgIAAB0AAAAAAAAAAAAuwC4AAAAMAAAAAAAAAA==",
+              "ViewState": "AgIAAAcAAAAAAAAAAAAAABUAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-10-17T16:15:53.557Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 8,
               "Title": "IAdminService.cs",
               "DocumentMoniker": "D:\\Web project\\Identity\\WebEng.Identity.Core.Application\\ServicesContracts\\IAdminService.cs",
               "RelativeDocumentMoniker": "WebEng.Identity.Core.Application\\ServicesContracts\\IAdminService.cs",
               "ToolTip": "D:\\Web project\\Identity\\WebEng.Identity.Core.Application\\ServicesContracts\\IAdminService.cs",
               "RelativeToolTip": "WebEng.Identity.Core.Application\\ServicesContracts\\IAdminService.cs",
-              "ViewState": "AgIAAAYAAAAAAAAAAAAqwBIAAAAMAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-17T16:13:40.142Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-10-17T16:13:40.142Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
+              "DocumentIndex": 5,
               "Title": "BaseApiController.cs",
               "DocumentMoniker": "D:\\Web project\\Identity\\WebEng.Identity.APIs\\Controllers\\BaseApiController.cs",
               "RelativeDocumentMoniker": "WebEng.Identity.APIs\\Controllers\\BaseApiController.cs",
@@ -170,20 +186,19 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 7,
               "Title": "AdminController.cs",
               "DocumentMoniker": "D:\\Web project\\Identity\\WebEng.Identity.APIs\\Controllers\\AdminController.cs",
               "RelativeDocumentMoniker": "WebEng.Identity.APIs\\Controllers\\AdminController.cs",
               "ToolTip": "D:\\Web project\\Identity\\WebEng.Identity.APIs\\Controllers\\AdminController.cs",
               "RelativeToolTip": "WebEng.Identity.APIs\\Controllers\\AdminController.cs",
-              "ViewState": "AgIAAAoAAAAAAAAAAAAmwBoAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAAwAAAAAAAAAAAAYwBIAAAAJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-17T16:08:32.513Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-10-17T16:08:32.513Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 14,
+              "DocumentIndex": 16,
               "Title": "20251010143858_IdentityMigrations.cs",
               "DocumentMoniker": "D:\\Web project\\Identity\\WebEng.Identity.Infra.Persistance\\Identity\\Migrations\\20251010143858_IdentityMigrations.cs",
               "RelativeDocumentMoniker": "WebEng.Identity.Infra.Persistance\\Identity\\Migrations\\20251010143858_IdentityMigrations.cs",
@@ -195,7 +210,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 12,
+              "DocumentIndex": 14,
               "Title": "20251016200121_InitialCreate.cs",
               "DocumentMoniker": "D:\\Web project\\Identity\\WebEng.Identity.Infra.Persistance\\Identity\\Migrations\\20251016200121_InitialCreate.cs",
               "RelativeDocumentMoniker": "WebEng.Identity.Infra.Persistance\\Identity\\Migrations\\20251016200121_InitialCreate.cs",
@@ -207,7 +222,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 16,
+              "DocumentIndex": 18,
               "Title": "WebEngIdentityDbContextModelSnapshot.cs",
               "DocumentMoniker": "D:\\Web project\\Identity\\WebEng.Identity.Infra.Persistance\\Identity\\Migrations\\WebEngIdentityDbContextModelSnapshot.cs",
               "RelativeDocumentMoniker": "WebEng.Identity.Infra.Persistance\\Identity\\Migrations\\WebEngIdentityDbContextModelSnapshot.cs",
@@ -219,7 +234,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 15,
+              "DocumentIndex": 17,
               "Title": "20251016201001_refreshtoken.cs",
               "DocumentMoniker": "D:\\Web project\\Identity\\WebEng.Identity.Infra.Persistance\\Identity\\Migrations\\20251016201001_refreshtoken.cs",
               "RelativeDocumentMoniker": "WebEng.Identity.Infra.Persistance\\Identity\\Migrations\\20251016201001_refreshtoken.cs",
@@ -231,19 +246,19 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 11,
+              "DocumentIndex": 9,
               "Title": "appsettings.json",
               "DocumentMoniker": "D:\\Web project\\Identity\\WebEng.Identity.APIs\\appsettings.json",
               "RelativeDocumentMoniker": "WebEng.Identity.APIs\\appsettings.json",
               "ToolTip": "D:\\Web project\\Identity\\WebEng.Identity.APIs\\appsettings.json",
               "RelativeToolTip": "WebEng.Identity.APIs\\appsettings.json",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAAaAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
               "WhenOpened": "2025-10-16T19:46:40.866Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 11,
               "Title": "IAuthService.cs",
               "DocumentMoniker": "D:\\Web project\\Identity\\WebEng.Identity.Core.Application\\ServicesContracts\\IAuthService.cs",
               "RelativeDocumentMoniker": "WebEng.Identity.Core.Application\\ServicesContracts\\IAuthService.cs",
@@ -251,12 +266,11 @@
               "RelativeToolTip": "WebEng.Identity.Core.Application\\ServicesContracts\\IAuthService.cs",
               "ViewState": "AgIAAA0AAAAAAAAAAAAmwBsAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-15T21:54:10.851Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-10-15T21:54:10.851Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 12,
               "Title": "RegisterDto.cs",
               "DocumentMoniker": "D:\\Web project\\Identity\\WebEng.Identity.Core.Application\\Models\\RegisterDto.cs",
               "RelativeDocumentMoniker": "WebEng.Identity.Core.Application\\Models\\RegisterDto.cs",
@@ -264,12 +278,11 @@
               "RelativeToolTip": "WebEng.Identity.Core.Application\\Models\\RegisterDto.cs",
               "ViewState": "AgIAAA4AAAAAAAAAAAAowB8AAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-13T21:19:31.409Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-10-13T21:19:31.409Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 18,
+              "DocumentIndex": 19,
               "Title": "RefreshToken.cs",
               "DocumentMoniker": "D:\\Web project\\Identity\\WebEng.Identity.Core.Domain\\Entities\\RefreshToken.cs",
               "RelativeDocumentMoniker": "WebEng.Identity.Core.Domain\\Entities\\RefreshToken.cs",
@@ -281,7 +294,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 19,
+              "DocumentIndex": 20,
               "Title": "User.cs",
               "DocumentMoniker": "D:\\Web project\\Identity\\WebEng.Identity.Core.Domain\\Entities\\User.cs",
               "RelativeDocumentMoniker": "WebEng.Identity.Core.Domain\\Entities\\User.cs",
@@ -293,7 +306,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 13,
+              "DocumentIndex": 15,
               "Title": "WebEngIdentityDbContext.cs",
               "DocumentMoniker": "D:\\Web project\\Identity\\WebEng.Identity.Infra.Persistance\\Identity\\WebEngIdentityDbContext.cs",
               "RelativeDocumentMoniker": "WebEng.Identity.Infra.Persistance\\Identity\\WebEngIdentityDbContext.cs",
@@ -305,7 +318,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 6,
               "Title": "LoginDto.cs",
               "DocumentMoniker": "D:\\Web project\\Identity\\WebEng.Identity.Core.Application\\Models\\LoginDto.cs",
               "RelativeDocumentMoniker": "WebEng.Identity.Core.Application\\Models\\LoginDto.cs",
@@ -318,20 +331,19 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 10,
               "Title": "UserDto.cs",
               "DocumentMoniker": "D:\\Web project\\Identity\\WebEng.Identity.Core.Application\\Models\\UserDto.cs",
               "RelativeDocumentMoniker": "WebEng.Identity.Core.Application\\Models\\UserDto.cs",
               "ToolTip": "D:\\Web project\\Identity\\WebEng.Identity.Core.Application\\Models\\UserDto.cs",
               "RelativeToolTip": "WebEng.Identity.Core.Application\\Models\\UserDto.cs",
-              "ViewState": "AgIAAAQAAAAAAAAAAAAAAAkAAAAqAAAAAAAAAA==",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAAAAkAAAAOAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-13T20:32:14.188Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-10-13T20:32:14.188Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 10,
+              "DocumentIndex": 13,
               "Title": "JwtSettings.cs",
               "DocumentMoniker": "D:\\Web project\\Identity\\WebEng.Identity.Core.Application\\Models\\JwtSettings.cs",
               "RelativeDocumentMoniker": "WebEng.Identity.Core.Application\\Models\\JwtSettings.cs",
@@ -339,8 +351,7 @@
               "RelativeToolTip": "WebEng.Identity.Core.Application\\Models\\JwtSettings.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAAAwAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-13T20:31:23.264Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-10-13T20:31:23.264Z"
             },
             {
               "$type": "Document",
@@ -350,14 +361,14 @@
               "RelativeDocumentMoniker": "WebEng.Identity.Core.Application\\Services\\AuthService.cs",
               "ToolTip": "D:\\Web project\\Identity\\WebEng.Identity.Core.Application\\Services\\AuthService.cs",
               "RelativeToolTip": "WebEng.Identity.Core.Application\\Services\\AuthService.cs",
-              "ViewState": "AgIAABsAAAAAAAAAAAAAACQAAABaAAAAAAAAAA==",
+              "ViewState": "AgIAADkAAAAAAAAAAAAiwEgAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-10-13T18:20:55.918Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 20,
+              "DocumentIndex": 21,
               "Title": "WebEng.Identity.Core.Application.csproj",
               "DocumentMoniker": "D:\\Web project\\Identity\\WebEng.Identity.Core.Application\\WebEng.Identity.Core.Application.csproj",
               "RelativeDocumentMoniker": "WebEng.Identity.Core.Application\\WebEng.Identity.Core.Application.csproj",
@@ -369,20 +380,20 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 2,
               "Title": "AccountController.cs",
               "DocumentMoniker": "D:\\Web project\\Identity\\WebEng.Identity.APIs\\Controllers\\AccountController.cs",
               "RelativeDocumentMoniker": "WebEng.Identity.APIs\\Controllers\\AccountController.cs",
               "ToolTip": "D:\\Web project\\Identity\\WebEng.Identity.APIs\\Controllers\\AccountController.cs",
               "RelativeToolTip": "WebEng.Identity.APIs\\Controllers\\AccountController.cs",
-              "ViewState": "AgIAAAsAAAAAAAAAAAAAABQAAAAnAAAAAAAAAA==",
+              "ViewState": "AgIAABkAAAAAAAAAAAAQwCIAAAAIAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-10-13T18:20:43.212Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 21,
+              "DocumentIndex": 22,
               "Title": "WebEng.Identity.APIs.csproj",
               "DocumentMoniker": "D:\\Web project\\Identity\\WebEng.Identity.APIs\\WebEng.Identity.APIs.csproj",
               "RelativeDocumentMoniker": "WebEng.Identity.APIs\\WebEng.Identity.APIs.csproj",

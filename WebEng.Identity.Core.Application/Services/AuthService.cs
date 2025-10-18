@@ -36,6 +36,10 @@ namespace WebEng.Identity.Core.Application.Services
 
         public async Task<UserDto> RegisterAsync(RegisterDto model, HttpResponse response)
         {
+            var existingUser = await _userManager.FindByEmailAsync(model.Email);
+            if (existingUser != null)
+                throw new ValidationException() { Errors = new[] { "Email is already registered." } };
+
             var user = new User()
             {
                 FirstName = model.DisplayName,
@@ -49,7 +53,18 @@ namespace WebEng.Identity.Core.Application.Services
             if (!result.Succeeded)
                 throw new ValidationException() { Errors = result.Errors.Select(e => e.Description).ToArray() };
 
-            await _userManager.AddToRoleAsync(user, "User");
+            var roleResult = await _userManager.AddToRoleAsync(user, "User");
+
+            if (!roleResult.Succeeded)
+            {
+                throw new ValidationException() { Errors = roleResult.Errors.Select(e => e.Description).ToArray() };
+            }
+
+            var roles = await _userManager.GetRolesAsync(user);
+
+            await _userManager.Users.Include(u => u.RefreshTokens).FirstOrDefaultAsync(u => u.Id == user.Id);
+            RemoveInActiveRefreshTokens(user);
+
             RefreshToken refreshToken = GenerateRefreshToken();
             user.RefreshTokens.Add(refreshToken);
             await _userManager.UpdateAsync(user);
@@ -62,13 +77,17 @@ namespace WebEng.Identity.Core.Application.Services
                 DisplayName = user.FirstName,
                 Email = user.Email!,
                 Token = await GenerateTokenAsync(user),
-                RefreshTokenExpiration = refreshToken.ExpiresOn
+                RefreshTokenExpiration = refreshToken.ExpiresOn,
+                Roles = roles.ToList()
+
             };
         }
 
         public async Task<UserDto> LoginAsync(LoginDto model, HttpResponse response)
         {
-            var user = await _userManager.FindByEmailAsync(model.Email);
+            var user = await _userManager.Users
+                    .Include(u => u.RefreshTokens)
+                    .FirstOrDefaultAsync(u => u.Email == model.Email);
 
             if (user is null)
                 throw new UnAuthorizedException("Invalid Login.");
@@ -84,12 +103,17 @@ namespace WebEng.Identity.Core.Application.Services
             if (!result.Succeeded)
                 throw new UnAuthorizedException("Invalid Login.");
 
+            var roles = await _userManager.GetRolesAsync(user);
+
+            await _userManager.Users.Include(u => u.RefreshTokens).FirstOrDefaultAsync(u => u.Id == user.Id);
+
+            RemoveInActiveRefreshTokens(user);
+
             RefreshToken refreshToken = GenerateRefreshToken();
             user.RefreshTokens.Add(refreshToken);
             await _userManager.UpdateAsync(user);
 
             SetRefreshTokenCookie(response, refreshToken.Token, refreshToken.ExpiresOn);
-
 
             return new UserDto()
             {
@@ -97,7 +121,8 @@ namespace WebEng.Identity.Core.Application.Services
                 DisplayName = user.FirstName,
                 Email = user.Email!,
                 Token = await GenerateTokenAsync(user),
-                RefreshTokenExpiration = refreshToken.ExpiresOn
+                RefreshTokenExpiration = refreshToken.ExpiresOn,
+                Roles = roles.ToList(),
             };
         }
 
@@ -105,6 +130,17 @@ namespace WebEng.Identity.Core.Application.Services
         {
             var email = claimsPrincipal.FindFirstValue(ClaimTypes.Email);
             var user = await _userManager.FindByEmailAsync(email!);
+
+            if (user == null)
+                throw new UnAuthorizedException("User not found.");
+
+            var roles = await _userManager.GetRolesAsync(user);
+
+
+            var securityStampClaim = claimsPrincipal.FindFirstValue("SecurityStamp");
+            if (user.SecurityStamp != securityStampClaim)
+                throw new UnAuthorizedException("Session expired. Please login again.");
+
 
             var token = request.Headers["Authorization"].ToString().Replace("Bearer ", "");
 
@@ -115,6 +151,8 @@ namespace WebEng.Identity.Core.Application.Services
                 Email = user.Email!,
                 DisplayName = user.FirstName,
                 Token = token,
+                Roles = roles.ToList(),
+                RefreshTokenExpiration = user.RefreshTokens.LastOrDefault().ExpiresOn
             };
         }
 
@@ -158,12 +196,33 @@ namespace WebEng.Identity.Core.Application.Services
             if (user is null)
                 throw new UnAuthorizedException("Invalid token.");
 
-            var refreshToken = user.RefreshTokens.Single(t => t.Token == token);
+            var oldRefreshToken = user.RefreshTokens.Single(t => t.Token == token);
 
-            if (!refreshToken.IsActive)
-                throw new UnAuthorizedException("Inactive token.");
+            if (!oldRefreshToken.IsActive)
+            {
+                foreach (var rt in user.RefreshTokens.Where(t => t.IsActive))
+                {
+                    rt.RevokedOn = DateTime.UtcNow;
+                }
+                await _userManager.UpdateAsync(user);
+                response.Cookies.Delete("refreshToken");
 
+                throw new UnAuthorizedException("Token reuse detected. All sessions have been revoked for security.");
+            }
 
+            oldRefreshToken.RevokedOn = DateTime.UtcNow;
+
+            RemoveInActiveRefreshTokens(user);
+
+            var newRefreshToken = GenerateRefreshToken();
+            user.RefreshTokens.Add(newRefreshToken);
+
+            await _userManager.UpdateSecurityStampAsync(user);
+            await _userManager.UpdateAsync(user);
+
+            SetRefreshTokenCookie(response, newRefreshToken.Token, newRefreshToken.ExpiresOn);
+
+            var roles = await _userManager.GetRolesAsync(user);
             var jwt = await GenerateTokenAsync(user);
             response.Headers["Authorization"] = "Bearer " + jwt;
 
@@ -173,8 +232,9 @@ namespace WebEng.Identity.Core.Application.Services
                 Id = user.Id,
                 DisplayName = user.FirstName,
                 Email = user.Email!,
+                Roles = roles.ToList(),
                 Token = jwt,
-                RefreshTokenExpiration = refreshToken.ExpiresOn
+                RefreshTokenExpiration = newRefreshToken.ExpiresOn
             };
         }
 
@@ -188,9 +248,24 @@ namespace WebEng.Identity.Core.Application.Services
             var userEmail = request.HttpContext?.User?.FindFirstValue(ClaimTypes.Email);
             var user = await _userManager.FindByEmailAsync(userEmail);
 
+            if (user == null)
+                throw new UnAuthorizedException("You are not signed in");
 
             await _userManager.UpdateSecurityStampAsync(user);
             response.Cookies.Delete("refreshToken");
+        }
+
+
+        private void RemoveInActiveRefreshTokens(User user)
+        {
+            var expiredTokens = user.RefreshTokens
+            .Where(t => !t.IsActive && t.ExpiresOn < DateTime.UtcNow.AddDays(-30))
+            .ToList();
+
+                foreach (var expired in expiredTokens)
+                {
+                    user.RefreshTokens.Remove(expired);
+                }
         }
 
         private async Task<string> GenerateTokenAsync(User user)
@@ -244,14 +319,15 @@ namespace WebEng.Identity.Core.Application.Services
         {
             var cookieOptions = new CookieOptions
             {
-                HttpOnly = true,                  
+                HttpOnly = false,                  
                 Expires = expires,
-                Secure = true,                      
-                SameSite = SameSiteMode.Strict,
+                Secure = false,                      
+                SameSite = SameSiteMode.Lax,
                 Path = "/"
             };
 
             response.Cookies.Append("refreshToken", refreshToken, cookieOptions);
+
         }
 
 
