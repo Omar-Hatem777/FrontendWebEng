@@ -135,15 +135,29 @@ function checkTokenStatus() {
 // ============================================
 // TOKEN REFRESH
 // ============================================
-
 async function refreshAccessToken() {
     console.log('[REFRESH] Starting token refresh...');
+    console.log('[REFRESH] Current cookies:', document.cookie);
+
+    const cookies = document.cookie.split(';');
+    const refreshTokenCookie = cookies.find(cookie => 
+        cookie.trim().startsWith('refreshToken=')
+    );
+    
+    if (!refreshTokenCookie) {
+        console.error('[REFRESH] ❌ No refresh token cookie found!');
+        console.log('[REFRESH] Available cookies:', cookies);
+        alert('No refresh token found. Please login again.');
+        handleTokenExpiration();
+        return null;
+    }
+
+    console.log('[REFRESH] ✅ Refresh token cookie exists');
 
     try {
-        console.log('[REFRESH] Endpoint: http://localhost:7291/api/Account/refresh');
-        console.log('[REFRESH] Current cookies:', document.cookie);
-
-        const response = await fetch('http://localhost:7291/api/Account/refresh', {
+        console.log('[REFRESH] Sending request to: http://127.0.0.1:5121/api/Account/refresh');
+        
+        const response = await fetch('http://127.0.0.1:5121/api/Account/refresh', {
             method: 'POST',
             credentials: 'include',
             headers: {
@@ -156,45 +170,40 @@ async function refreshAccessToken() {
 
         if (!response.ok) {
             const errorText = await response.text();
-            console.error('[REFRESH] Failed with status:', response.status);
+            console.error('[REFRESH] ❌ Failed with status:', response.status);
             console.error('[REFRESH] Error response:', errorText);
-            throw new Error(`Token refresh failed: ${response.status} - ${errorText}`);
+            
+            // Try to parse as JSON
+            try {
+                const errorJson = JSON.parse(errorText);
+                alert(`Token refresh failed: ${errorJson.message || errorText}`);
+            } catch {
+                alert(`Token refresh failed: ${response.status} - ${errorText}`);
+            }
+            
+            throw new Error(`Token refresh failed: ${response.status}`);
         }
 
-        const responseText = await response.text();
-        console.log('[REFRESH] Response text:', responseText);
-
-        let data;
-        try {
-            data = JSON.parse(responseText);
-        } catch (parseError) {
-            console.error('[REFRESH] Failed to parse JSON:', parseError);
-            console.error('[REFRESH] Raw response:', responseText);
-            throw new Error('Invalid JSON response from refresh endpoint');
-        }
-
-        console.log('[REFRESH] Response data:', data);
-
-        const newToken = data.token || data.accessToken || data.access_token;
+        const data = await response.json();
+        console.log('[REFRESH] ✅ Response data:', data);
+        
+        const newToken = data.token || data.accessToken;
+        
         if (!newToken) {
-            console.error('[REFRESH] No token found in response:', data);
+            console.error('[REFRESH] ❌ No token in response:', data);
             throw new Error('No token in refresh response');
         }
 
+        console.log('[REFRESH] ✅ New token received (last 10 chars):', newToken.slice(-10));
         localStorage.setItem('accessToken', newToken);
         localStorage.setItem('token', newToken);
-
+        
         showTokenRefreshNotification(newToken);
-
-        console.log('[REFRESH] âœ… Success! Token updated, ending in:', newToken.slice(-5));
+        
         return newToken;
     } catch (error) {
-        console.error('[REFRESH] âŒ Error:', error.message);
-        console.error('[REFRESH] Error details:', {
-            message: error.message,
-            stack: error.stack
-        });
-        handleTokenExpiration();
+        console.error('[REFRESH] ❌ Error:', error);
+        setTimeout(() => handleTokenExpiration(), 2000);
         return null;
     }
 }
