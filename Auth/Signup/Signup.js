@@ -77,7 +77,7 @@ async function signup(event) {
     };
 
     try {
-        const response = await fetch("https://localhost:7291/api/Account/register", {
+        const response = await fetch("http://localhost:5121/api/Account/register", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
