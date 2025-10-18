@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using WebEng.Identity.Core.Application.Models;
 using WebEng.Identity.Core.Application.ServicesContracts;
 
 namespace WebEng.Identity.APIs.Controllers
@@ -18,9 +19,20 @@ namespace WebEng.Identity.APIs.Controllers
         }
 
         [HttpGet("users")]
-        public IActionResult GetAllUsers()
+        public async Task<ActionResult<List<UserDto>>> GetAllUsers()
         {
-            return Ok(new { message = "Admin access granted" });
+            var users = await _adminService.GetAllUsers();
+            return Ok(users);
+        }
+
+
+        [HttpGet("user/{id}")]
+        public async Task<ActionResult<UserDto>> GetUserById(string id)
+        {
+            var user = await _adminService.GetUserById(id);
+            if (user == null)
+                return NotFound($"User with ID '{id}' not found.");
+            return Ok(user);
         }
     }
 }

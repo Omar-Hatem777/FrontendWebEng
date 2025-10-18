@@ -42,7 +42,9 @@ namespace WebEng.Identity.APIs
 
             builder.Services.AddScoped(typeof(IPasswordHasher<User>), typeof(Argon2PasswordHasher<User>));
 
+
             builder.Services.AddScoped(typeof(IAuthService), typeof(AuthService));
+            builder.Services.AddScoped(typeof(IAdminService), typeof(AdminService));
 
             builder.Services.Configure<JwtSettings>(builder.Configuration.GetSection("jwtSettings")); 
 
