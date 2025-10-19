@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Dark Mode Signup</title>
+    <title>Signup</title>
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="/CSS/bootstrap.min.css">
@@ -19,11 +19,11 @@
 <body>
 
     <!-- Background -->
-    <div class="background-dark"></div>
+    <div class="background-light"></div>
 
     <!-- Signup Container -->
     <div class="container d-flex align-items-center justify-content-center vh-100">
-        <div class="card shadow-lg p-4 text-light login-card">
+        <div class="card shadow-lg p-4 text-dark login-card">
             <div class="icon-box mx-auto mb-3">
                 <i class="fa-solid fa-user-plus fa-lg"></i>
             </div>
@@ -34,10 +34,10 @@
                 <div class="mb-3">
                     <label for="username" class="form-label">Username</label>
                     <div class="input-group">
-                        <span class="input-group-text bg-dark border-0 text-secondary">
+                        <span class="input-group-text bg-light border-0 text-secondary">
                             <i class="fa-solid fa-user"></i>
                         </span>
-                        <input type="text" class="form-control bg-dark text-light border-0" id="username"
+                        <input type="text" class="form-control bg-light text-dark border" id="username"
                             placeholder="Enter your username" required>
                     </div>
                     <div id="UserNameError" class="text-danger mt-2 mb-3" style="display:none;"></div>
@@ -47,10 +47,10 @@
                 <div class="mb-3">
                     <label for="email" class="form-label">Email</label>
                     <div class="input-group">
-                        <span class="input-group-text bg-dark border-0 text-secondary">
+                        <span class="input-group-text bg-light border-0 text-secondary">
                             <i class="fa-solid fa-envelope"></i>
                         </span>
-                        <input type="email" class="form-control bg-dark text-light border-0" id="email"
+                        <input type="email" class="form-control bg-light text-dark border" id="email"
                             placeholder="Enter your email" required>
                     </div>
                     <div id="EmailError" class="text-danger mt-2 mb-3" style="display:none;"></div>
@@ -59,10 +59,10 @@
                 <div class="mb-3">
                     <label for="phone" class="form-label">Phone</label>
                     <div class="input-group">
-                        <span class="input-group-text bg-dark border-0 text-secondary">
+                        <span class="input-group-text bg-light border-0 text-secondary">
                             <i class="fa-solid fa-phone"></i>
                         </span>
-                        <input type="email" class="form-control bg-dark text-light border-0" id="phone" placeholder="Enter your phone number"
+                        <input type="email" class="form-control bg-light text-dark border" id="phone" placeholder="Enter your phone number"
                             required>
                     </div>
                     <div id="PhoneError" class="text-danger mt-2 mb-3" style="display:none;"></div>
@@ -72,12 +72,12 @@
                 <div class="mb-4">
                     <label for="password" class="form-label">Password</label>
                     <div class="input-group">
-                        <span class="input-group-text bg-dark border-0 text-secondary">
+                        <span class="input-group-text bg-light border-0 text-secondary">
                             <i class="fa-solid fa-lock"></i>
                         </span>
-                        <input type="password" class="form-control bg-dark text-light border-0" id="password"
+                        <input type="password" class="form-control bg-light text-dark border" id="password"
                             placeholder="Enter your password" required>
-                        <span class="input-group-text bg-dark border-0 text-secondary" id="togglePassword" style="cursor:pointer;">
+                        <span class="input-group-text bg-light border-0 text-secondary" id="togglePassword" style="cursor:pointer;">
                             <i class="fa-solid fa-eye-slash" id="eyeIcon"></i>
                         </span>
                     </div>
@@ -85,11 +85,11 @@
                 </div>
 
                 <!-- Button -->
-                <button type="submit" class="btn btn-info w-100 fw-bold mb-3" onclick="signup(event)">Sign Up</button>
+                <button type="submit" class="btn btn-primary w-100 fw-bold mb-3" onclick="signup(event)">Sign Up</button>
 
                 <!-- Link -->
                 <div class="text-center">
-                    <a href="/Auth/Login/Login.html" class="text-info text-decoration-none small">
+                    <a href="/Auth/Login/Login.html" class="text-primary text-decoration-none small">
                         Already have an account? <span class="fw-semibold">Sign in!</span>
                     </a>
                 </div>

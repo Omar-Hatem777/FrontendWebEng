@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Dark Mode Login</title>
+    <title>Login</title>
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="/CSS/bootstrap.min.css">
@@ -19,11 +19,11 @@
 <body>
 
     <!-- Background -->
-    <div class="background-dark"></div>
+    <div class="background-light"></div>
 
     <!-- Login Container -->
     <div class="container d-flex align-items-center justify-content-center vh-100">
-        <div class="card shadow-lg p-5 text-light login-card">
+        <div class="card shadow-lg p-5 text-dark login-card">
             <div class="icon-box mx-auto mb-4">
                 <i class="fa-solid fa-right-to-bracket fa-lg"></i>
             </div>
@@ -35,10 +35,10 @@
                 <div class="mb-4">
                     <label for="email" class="form-label">Email</label>
                     <div class="input-group">
-                        <span class="input-group-text bg-dark border-0 text-secondary">
+                        <span class="input-group-text bg-light border-0 text-secondary">
                             <i class="fa-solid fa-envelope"></i>
                         </span>
-                        <input type="email" class="form-control bg-dark text-light border-0" id="email"
+                        <input type="email" class="form-control bg-light text-dark border" id="email"
                             placeholder="Enter your email" required>
                     </div>
                 </div>
@@ -46,23 +46,23 @@
                 <div class="mb-4">
                     <label for="password" class="form-label">Password</label>
                     <div class="input-group">
-                        <span class="input-group-text bg-dark border-0 text-secondary">
+                        <span class="input-group-text bg-light border-0 text-secondary">
                             <i class="fa-solid fa-lock"></i>
                         </span>
-                        <input type="password" class="form-control bg-dark text-light border-0" id="password"
+                        <input type="password" class="form-control bg-light text-dark border" id="password"
                             placeholder="Enter your password" required>
-                        <span class="input-group-text bg-dark border-0 text-secondary" id="togglePassword" style="cursor:pointer;">
+                        <span class="input-group-text bg-light border-0 text-secondary" id="togglePassword" style="cursor:pointer;">
                             <i class="fa-solid fa-eye-slash" id="eyeIcon"></i>
                         </span>
                     </div>
                 </div>
                 <div id="loginError" class="text-danger mt-2 mb-3" style="display:none;"></div>
-                <button type="submit" class="btn btn-info w-100 fw-bold py-2 mb-4" onclick="login(event)">Get Started</button>
+                <button type="submit" class="btn btn-primary w-100 fw-bold py-2 mb-4" onclick="login(event)">Get Started</button>
             </form>
 
             <div class="text-center">
-                <a href="/Auth/Signup/Signup.html" class="text-info text-decoration-none small">
-                    Don’t have an account? <span class="fw-semibold">Sign up!</span>
+                <a href="/Auth/Signup/Signup.html" class="text-primary text-decoration-none small">
+                    Don't have an account? <span class="fw-semibold">Sign up!</span>
                 </a>
             </div>
         </div>

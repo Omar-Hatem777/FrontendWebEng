@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Admin Dashboard</title>
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="/CSS/bootstrap.min.css">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/CSS/styles.css">
+</head>
+
+<body class="bg-light text-dark">
+
+    <!-- Background -->
+    <div class="background-light"></div>
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-light bg-light shadow-sm px-4">
+        <span class="navbar-brand mb-0 h1">
+            <i class="fa-solid fa-shield-halved me-2 text-primary"></i>Admin Dashboard
+        </span>
+        <button class="btn btn-outline-primary btn-sm" onclick="logout()">
+            <i class="fa-solid fa-right-from-bracket me-1"></i>Logout
+        </button>
+    </nav>
+
+    <!-- Content -->
+    <div class="container py-4">
+        <!-- Welcome Card -->
+        <div class="card text-center text-dark bg-white border shadow-lg p-4 mb-4">
+            <div class="icon-box mx-auto mb-3">
+                <i class="fa-solid fa-user-shield fa-3x text-primary"></i>
+            </div>
+            <h3 id="adminWelcome" class="fw-bold mb-2">Welcome, Admin!</h3>
+            <p id="adminEmail" class="text-muted mb-0"></p>
+        </div>
+
+        <!-- Admin Actions -->
+        <div class="card text-dark bg-white border shadow-lg p-4 mb-4">
+            <h4 class="text-center mb-4">
+                <i class="fa-solid fa-tools me-2 text-primary"></i>Admin Actions
+            </h4>
+            
+            <div class="row">
+                <div class="col-md-6 mb-3">
+                    <button class="btn btn-primary w-100 py-3 shadow-sm" onclick="loadAllUsers()">
+                        <i class="fa-solid fa-users me-2"></i>Get All Users
+                    </button>
+                </div>
+                <div class="col-md-6 mb-3">
+                    <div class="input-group shadow-sm">
+                        <input type="text" class="form-control" id="userIdInput" placeholder="Enter User ID">
+                        <button class="btn btn-outline-primary" onclick="getUserById()">
+                            <i class="fa-solid fa-search me-1"></i>Get User
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Results Display -->
+        <div class="card text-dark bg-white border shadow-lg p-4" id="resultsCard" style="display: none;">
+            <h4 class="text-center mb-4">
+                <i class="fa-solid fa-list me-2 text-primary"></i>Results
+            </h4>
+            <div id="resultsContent">
+                <!-- Results will be displayed here -->
+            </div>
+        </div>
+
+        <!-- Loading Spinner -->
+        <div class="text-center" id="loadingSpinner" style="display: none;">
+            <div class="spinner-border text-primary" role="status">
+                <span class="visually-hidden">Loading...</span>
+            </div>
+            <p class="mt-2">Loading...</p>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="/JS/bootstrap.bundle.min.js"></script>
+
+    <!-- Admin JS -->
+    <script src="/JS/admin.js"></script>
+</body>
+
+</html>

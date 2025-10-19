@@ -198,7 +198,13 @@ async function refreshAccessToken() {
         localStorage.setItem('accessToken', newToken);
         localStorage.setItem('token', newToken);
         
-        showTokenRefreshNotification(newToken);
+        // showTokenRefreshNotification(newToken); // Disabled notification
+        
+        // Update the UI with the new token
+        updateUserDataDisplay();
+        
+        // Restart the countdown timer with the new token
+        restartTokenCountdown();
         
         return newToken;
     } catch (error) {
@@ -330,7 +336,7 @@ async function testRefreshEndpoint() {
     console.log('Document cookies:', document.cookie);
 
     try {
-        const response = await fetch('http://localhost:7291/api/Account/refresh', {
+        const response = await fetch('http://127.0.0.1:7291/api/Account/refresh', {
             method: 'POST',
             credentials: 'include',
             headers: {
@@ -417,10 +423,25 @@ document.addEventListener("DOMContentLoaded", async () => {
 
     const displayName = localStorage.getItem("displayName");
     const email = localStorage.getItem("userEmail");
+    const rolesString = localStorage.getItem("roles") || "[]";
 
     if (!displayName || !email) {
         console.log("[APP] Missing user data - redirecting to login");
         window.location.href = "/Auth/Login/Login.html";
+        return;
+    }
+
+    // Check if user is admin and redirect to admin dashboard
+    let roles = [];
+    try {
+        roles = JSON.parse(rolesString);
+    } catch (error) {
+        console.error('[APP] Error parsing roles:', error);
+    }
+
+    if (roles.includes('Admin') || roles.includes('admin')) {
+        console.log("[APP] Admin user detected - redirecting to admin dashboard");
+        window.location.href = "/admin.html";
         return;
     }
 
@@ -438,6 +459,12 @@ document.addEventListener("DOMContentLoaded", async () => {
 
     if (welcomeEl) welcomeEl.textContent = `Welcome, ${displayName}!`;
     if (emailEl) emailEl.textContent = email;
+
+    // Update user data display
+    updateUserDataDisplay();
+    
+    // Start token countdown timer
+    startTokenCountdown();
 
     // Periodic token check every 20 seconds
     const checkInterval = 20 * 1000;
@@ -488,11 +515,49 @@ document.addEventListener("DOMContentLoaded", async () => {
 });
 
 // ============================================
+// LOGOUT LOADING STATE
+// ============================================
+
+function showLogoutLoadingState() {
+    // Create loading overlay
+    const loadingOverlay = document.createElement('div');
+    loadingOverlay.id = 'logoutLoadingOverlay';
+    loadingOverlay.style.cssText = `
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.8);
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        z-index: 10000;
+        color: white;
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    `;
+    
+    loadingOverlay.innerHTML = `
+        <div class="spinner-border text-light mb-3" style="width: 3rem; height: 3rem;" role="status">
+            <span class="visually-hidden">Loading...</span>
+        </div>
+        <h4>Signing out...</h4>
+        <p class="text-muted">Please wait...</p>
+    `;
+    
+    document.body.appendChild(loadingOverlay);
+}
+
+// ============================================
 // LOGOUT FUNCTION
 // ============================================
 
 async function logout() {
     console.log('[LOGOUT] Starting logout...');
+
+    // Show loading state
+    showLogoutLoadingState();
 
     try {
         const token = getAccessToken();
@@ -505,7 +570,7 @@ async function logout() {
             headers["Authorization"] = `Bearer ${token}`;
         }
 
-        const response = await fetch("http://localhost:7291/api/Account/logout", {
+        const response = await fetch("http://127.0.0.1:5121/api/Account/logout", {
             method: "POST",
             headers: headers,
             credentials: 'include'
@@ -531,12 +596,159 @@ async function logout() {
         localStorage.removeItem("displayName");
         localStorage.removeItem("token");
         localStorage.removeItem("accessToken");
+        localStorage.removeItem("roles");
 
-        window.location.href = "/Auth/Login/Login.html";
+        // Delay redirect to show loading state
+        setTimeout(() => {
+            window.location.href = "/Auth/Login/Login.html";
+        }, 1000);
 
     } catch (error) {
         console.error("[LOGOUT] Error:", error);
         localStorage.clear();
-        window.location.href = "/Auth/Login/Login.html";
+        
+        // Still show loading state even on error
+        setTimeout(() => {
+            window.location.href = "/Auth/Login/Login.html";
+        }, 1000);
     }
+}
+
+// ============================================
+// USER DATA DISPLAY FUNCTIONS
+// ============================================
+
+function updateUserDataDisplay() {
+    console.log('[UI] Updating user data display...');
+    
+    // Get user data from localStorage
+    const displayName = localStorage.getItem("displayName") || "N/A";
+    const userName = localStorage.getItem("userName") || "N/A";
+    const email = localStorage.getItem("userEmail") || "N/A";
+    const rolesString = localStorage.getItem("roles") || "[]";
+    const token = getAccessToken() || "N/A";
+    
+    // Parse roles array
+    let roles = [];
+    try {
+        roles = JSON.parse(rolesString);
+    } catch (error) {
+        console.error('[UI] Error parsing roles:', error);
+        roles = [];
+    }
+    
+    // Format roles for display
+    const rolesDisplay = roles.length > 0 ? roles.join(", ") : "No roles assigned";
+    
+    // Debug logging
+    console.log('[UI] Retrieved data:', {
+        displayName,
+        userName,
+        email,
+        roles,
+        rolesDisplay,
+        tokenLength: token !== "N/A" ? token.length : 0
+    });
+    
+    // Update display elements
+    const displayNameEl = document.getElementById("displayNameValue");
+    const emailEl = document.getElementById("emailValue");
+    const roleEl = document.getElementById("roleValue");
+    const tokenEl = document.getElementById("tokenValue");
+    
+    if (displayNameEl) displayNameEl.textContent = displayName;
+    if (emailEl) emailEl.textContent = email;
+    if (roleEl) roleEl.textContent = rolesDisplay;
+    
+    if (tokenEl && token !== "N/A") {
+        // Show last 10 characters of token
+        const last10Chars = token.slice(-10);
+        tokenEl.textContent = `...${last10Chars}`;
+    } else if (tokenEl) {
+        tokenEl.textContent = "No token found";
+    }
+    
+    console.log('[UI] User data display updated');
+}
+
+function startTokenCountdown() {
+    console.log('[UI] Starting token countdown timer...');
+    
+    const countdownEl = document.getElementById("countdownTimer");
+    const countdownTextEl = document.getElementById("countdownText");
+    
+    if (!countdownEl || !countdownTextEl) {
+        console.error('[UI] Countdown elements not found');
+        return;
+    }
+    
+    function updateCountdown() {
+        const token = getAccessToken();
+        
+        if (!token) {
+            countdownTextEl.textContent = "No token available";
+            countdownEl.className = "countdown-timer";
+            return;
+        }
+        
+        try {
+            const payload = JSON.parse(atob(token.split('.')[1]));
+            const expiration = payload.exp * 1000;
+            const now = Date.now();
+            const timeUntilExpiry = Math.round((expiration - now) / 1000);
+            
+            if (timeUntilExpiry <= 0) {
+                countdownTextEl.textContent = "Token expired - refreshing...";
+                countdownEl.className = "countdown-timer countdown-critical";
+                return;
+            }
+            
+            const minutes = Math.floor(timeUntilExpiry / 60);
+            const seconds = timeUntilExpiry % 60;
+            
+            countdownTextEl.textContent = `${minutes}:${seconds.toString().padStart(2, '0')} until refresh`;
+            
+            // Change color based on time remaining
+            if (timeUntilExpiry <= 30) {
+                countdownEl.className = "countdown-timer countdown-critical";
+            } else if (timeUntilExpiry <= 120) {
+                countdownEl.className = "countdown-timer countdown-warning";
+            } else {
+                countdownEl.className = "countdown-timer";
+            }
+            
+        } catch (error) {
+            console.error('[UI] Error parsing token for countdown:', error);
+            countdownTextEl.textContent = "Invalid token";
+            countdownEl.className = "countdown-timer countdown-critical";
+        }
+    }
+    
+    // Update immediately
+    updateCountdown();
+    
+    // Update every second
+    const countdownInterval = setInterval(updateCountdown, 1000);
+    
+    // Clear interval when page unloads
+    window.addEventListener('beforeunload', () => {
+        clearInterval(countdownInterval);
+    });
+    
+    // Store interval reference globally so it can be cleared and restarted
+    window.tokenCountdownInterval = countdownInterval;
+    
+    console.log('[UI] Token countdown timer started');
+}
+
+function restartTokenCountdown() {
+    console.log('[UI] Restarting token countdown timer...');
+    
+    // Clear existing interval if it exists
+    if (window.tokenCountdownInterval) {
+        clearInterval(window.tokenCountdownInterval);
+    }
+    
+    // Start new countdown timer
+    startTokenCountdown();
 }

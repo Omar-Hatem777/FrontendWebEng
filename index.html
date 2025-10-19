@@ -16,29 +16,69 @@
     <link rel="stylesheet" href="/CSS/styles.css">
 </head>
 
-<body class="bg-dark text-light">
+<body class="bg-light text-dark">
 
     <!-- Background (optional for consistency) -->
-    <div class="background-dark"></div>
+    <div class="background-light"></div>
 
     <!-- Navbar -->
-    <nav class="navbar navbar-dark bg-dark shadow-sm px-4">
+    <nav class="navbar navbar-light bg-light shadow-sm px-4">
         <span class="navbar-brand mb-0 h1">
-            <i class="fa-solid fa-house me-2 text-info"></i>Home Page
+            <i class="fa-solid fa-house me-2 text-primary"></i>Home Page
         </span>
-        <button class="btn btn-outline-info btn-sm" onclick="logout()">
+        <button class="btn btn-outline-primary btn-sm" onclick="logout()">
             <i class="fa-solid fa-right-from-bracket me-1"></i>Logout
         </button>
     </nav>
 
     <!-- Content -->
-    <div class="container d-flex flex-column justify-content-center align-items-center vh-100">
-        <div class="card text-center text-light bg-dark border-0 shadow-lg p-4">
+    <div class="container py-4">
+        <!-- Welcome Card -->
+        <div class="card text-center text-dark bg-white border shadow-lg p-4 mb-4">
             <div class="icon-box mx-auto mb-3">
-                <i class="fa-solid fa-user-circle fa-3x text-info"></i>
+                <i class="fa-solid fa-user-circle fa-3x text-primary"></i>
             </div>
             <h3 id="welcome" class="fw-bold mb-2">Welcome!</h3>
-            <p id="userEmail" class="text-secondary mb-0"></p>
+            <p id="userEmail" class="text-muted mb-0"></p>
+        </div>
+
+        <!-- User Data Display -->
+        <div class="card text-dark bg-white border shadow-lg p-4 user-data-card">
+            <h4 class="text-center mb-4">
+                <i class="fa-solid fa-user-gear me-2 text-primary"></i>User Information
+            </h4>
+            
+            <div class="user-info-item">
+                <span class="user-info-label">Display Name:</span>
+                <span class="user-info-value" id="displayNameValue">Loading...</span>
+            </div>
+            
+            <div class="user-info-item">
+                <span class="user-info-label">Email:</span>
+                <span class="user-info-value" id="emailValue">Loading...</span>
+            </div>
+            
+            <div class="user-info-item">
+                <span class="user-info-label">Role:</span>
+                <span class="user-info-value" id="roleValue">Loading...</span>
+            </div>
+
+            <!-- Token Display -->
+            <div class="token-display">
+                <h5 class="text-center mb-3">
+                    <i class="fa-solid fa-key me-2"></i>Authentication Token
+                </h5>
+                
+                <div class="token-info">
+                    <span class="user-info-label">Token (last 10 chars):</span>
+                    <span class="token-value" id="tokenValue">Loading...</span>
+                </div>
+                
+                <div class="countdown-timer" id="countdownTimer">
+                    <i class="fa-solid fa-clock me-2"></i>
+                    <span id="countdownText">Calculating...</span>
+                </div>
+            </div>
         </div>
     </div>
 
