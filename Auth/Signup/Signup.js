@@ -67,12 +67,6 @@ async function signup(event) {
     const phoneNumber = SignupPhoneNumber.value.trim();
     
     const signupButton = document.querySelector('button[type="submit"]');
-    
-    // Show loading state on button
-    const originalButtonText = signupButton.innerHTML;
-    signupButton.innerHTML = '<span class="spinner-border spinner-border-sm me-2" role="status"></span>Creating account...';
-    signupButton.disabled = true;
-
     const userNameError = document.getElementById('UserNameError');
     const emailError = document.getElementById('EmailError');
     const passwordError = document.getElementById('PasswordError');
@@ -112,7 +106,16 @@ async function signup(event) {
         phoneError.textContent = 'Phone number must contain only digits.';
         hasError = true;
     }
-    if (hasError) return;
+    
+    // If there are validation errors, don't proceed with signup
+    if (hasError) {
+        return;
+    }
+
+    // Show loading state on button only after validation passes
+    const originalButtonText = signupButton.innerHTML;
+    signupButton.innerHTML = '<span class="spinner-border spinner-border-sm me-2" role="status"></span>Creating account...';
+    signupButton.disabled = true;
 
     const body = {
         displayName: userName,

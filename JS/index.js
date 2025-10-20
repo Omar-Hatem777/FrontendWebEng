@@ -16,36 +16,72 @@ function showTokenRefreshNotification(newToken) {
         background: linear-gradient(135deg, #28a745, #20c997);
         color: white;
         padding: 15px 20px;
-        border-radius: 8px;
-        box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        border-radius: 12px;
+        box-shadow: 0 8px 25px rgba(0,0,0,0.15);
         z-index: 10000;
         font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
         font-size: 14px;
-        max-width: 300px;
-        animation: slideIn 0.3s ease-out;
+        max-width: 320px;
+        animation: slideInRight 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        backdrop-filter: blur(10px);
+        border: 1px solid rgba(255, 255, 255, 0.2);
     `;
 
     notification.innerHTML = `
         <div style="display: flex; align-items: center; gap: 10px;">
-            <div style="font-size: 18px;">ðŸ”„</div>
-            <div>
+            <div style="font-size: 18px;"></div>
+            <div style="flex: 1;">
                 <div style="font-weight: 600; margin-bottom: 4px;">Token Refreshed</div>
                 <div style="font-size: 12px; opacity: 0.9;">
                     New token ending in: <code style="background: rgba(255,255,255,0.2); padding: 2px 4px; border-radius: 3px;">${last5Chars}</code>
                 </div>
             </div>
+            <button onclick="this.parentElement.parentElement.parentElement.remove()" style="
+                background: none;
+                border: none;
+                color: rgba(255,255,255,0.7);
+                font-size: 18px;
+                cursor: pointer;
+                padding: 0;
+                width: 24px;
+                height: 24px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                border-radius: 50%;
+                transition: all 0.2s ease;
+            " onmouseover="this.style.background='rgba(255,255,255,0.2)'" onmouseout="this.style.background='none'">
+                ×
+            </button>
         </div>
     `;
 
     const style = document.createElement('style');
     style.textContent = `
-        @keyframes slideIn {
-            from { transform: translateX(100%); opacity: 0; }
-            to { transform: translateX(0); opacity: 1; }
+        @keyframes slideInRight {
+            from { 
+                transform: translateX(100%) scale(0.8); 
+                opacity: 0; 
+            }
+            to { 
+                transform: translateX(0) scale(1); 
+                opacity: 1; 
+            }
         }
-        @keyframes slideOut {
-            from { transform: translateX(0); opacity: 1; }
-            to { transform: translateX(100%); opacity: 0; }
+        @keyframes slideOutRight {
+            from { 
+                transform: translateX(0) scale(1); 
+                opacity: 1; 
+            }
+            to { 
+                transform: translateX(100%) scale(0.8); 
+                opacity: 0; 
+            }
+        }
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+            40% { transform: translateY(-3px); }
+            60% { transform: translateY(-2px); }
         }
     `;
     document.head.appendChild(style);
@@ -59,14 +95,14 @@ function showTokenRefreshNotification(newToken) {
 
     setTimeout(() => {
         if (notification.parentNode) {
-            notification.style.animation = 'slideOut 0.3s ease-in';
+            notification.style.animation = 'slideOutRight 0.3s ease-in';
             setTimeout(() => {
                 if (notification.parentNode) {
                     notification.remove();
                 }
             }, 300);
         }
-    }, 4000);
+    }, 5000);
 
     console.log(`[NOTIFY] Token refresh notification shown. Ending in: ${last5Chars}`);
 }
@@ -198,7 +234,7 @@ async function refreshAccessToken() {
         localStorage.setItem('accessToken', newToken);
         localStorage.setItem('token', newToken);
         
-        // showTokenRefreshNotification(newToken); // Disabled notification
+        showTokenRefreshNotification(newToken); // Show token refresh notification
         
         // Update the UI with the new token
         updateUserDataDisplay();
@@ -324,7 +360,7 @@ function checkRefreshTokenCookie() {
         console.log('âŒ No refresh token cookie found!');
         console.log('Backend should set: Set-Cookie: refreshToken=value; HttpOnly; Secure=false; SameSite=Lax');
     } else {
-        console.log('âœ… Refresh token cookie found');
+        console.log(' Refresh token cookie found');
     }
 
     console.log('=== END CHECK ===');
@@ -404,6 +440,83 @@ function testRefreshNotification() {
 }
 
 // ============================================
+// ACCESS CONTROL TEST FUNCTIONS
+// ============================================
+
+function testAdminAccess() {
+    console.log('[TEST] Regular user attempting to access admin features...');
+    
+    // Try to access admin page directly
+    console.log('[TEST] Attempting to access admin.html...');
+    
+    // Check if user has admin role
+    const rolesString = localStorage.getItem("roles") || "[]";
+    let roles = [];
+    
+    try {
+        roles = JSON.parse(rolesString);
+    } catch (error) {
+        console.error('[TEST] Error parsing roles:', error);
+    }
+
+    const isAdmin = roles.includes('Admin') || roles.includes('admin');
+    
+    if (isAdmin) {
+        console.log('[TEST] User is actually an admin - redirecting to admin page');
+        window.location.href = "/admin.html";
+    } else {
+        console.log('[TEST] User is not an admin - showing access denied message');
+        alert("Access Denied!\n\nYou are not authorized to access admin features.\nOnly administrators can access the admin dashboard.");
+        
+        // Try to simulate what would happen if they tried to access admin features
+        console.log('[TEST] Simulating admin API call...');
+        simulateAdminAPICall();
+    }
+}
+
+async function simulateAdminAPICall() {
+    console.log('[TEST] Simulating admin API call...');
+    
+    try {
+        const token = await getValidToken();
+        if (!token) {
+            console.log('[TEST] No valid token - would be redirected to login');
+            return;
+        }
+
+        // Try to call admin API
+        const response = await fetch('http://127.0.0.1:5121/api/Admin/users', {
+            method: 'GET',
+            headers: {
+                'Authorization': `Bearer ${token}`,
+                'Content-Type': 'application/json'
+            }
+        });
+
+        console.log('[TEST] Admin API response status:', response.status);
+
+        if (response.status === 403) {
+            console.log('[TEST] ✅ Server correctly returned 403 Forbidden');
+            alert("Server Response: 403 Forbidden\n\nThe server correctly denied access to admin features because you don't have admin privileges.");
+        } else if (response.status === 401) {
+            console.log('[TEST] Server returned 401 Unauthorized');
+            alert("Server Response: 401 Unauthorized\n\nYour token may be invalid or expired.");
+        } else if (response.ok) {
+            console.log('[TEST] ⚠️ Server allowed access - this might be a security issue');
+            alert("Server Response: 200 OK\n\n⚠️ WARNING: The server allowed access to admin features even though you're not an admin. This could be a security issue!");
+        } else {
+            console.log('[TEST] Server returned unexpected status:', response.status);
+            const errorText = await response.text();
+            alert(`Server Response: ${response.status}\n\n${errorText}`);
+        }
+
+    } catch (error) {
+        console.error('[TEST] Error calling admin API:', error);
+        alert(`Error calling admin API: ${error.message}`);
+    }
+}
+
+// ============================================
 // EXPOSE DEBUG FUNCTIONS
 // ============================================
 
@@ -413,6 +526,7 @@ window.checkRefreshTokenCookie = checkRefreshTokenCookie;
 window.testRefreshEndpoint = testRefreshEndpoint;
 window.testTokenExpiration = testTokenExpiration;
 window.testRefreshNotification = testRefreshNotification;
+window.testAdminAccess = testAdminAccess;
 
 // ============================================
 // MAIN APPLICATION LOGIC

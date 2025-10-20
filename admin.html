@@ -55,12 +55,9 @@
                     </button>
                 </div>
                 <div class="col-md-6 mb-3">
-                    <div class="input-group shadow-sm">
-                        <input type="text" class="form-control" id="userIdInput" placeholder="Enter User ID">
-                        <button class="btn btn-outline-primary" onclick="getUserById()">
-                            <i class="fa-solid fa-search me-1"></i>Get User
-                        </button>
-                    </div>
+                    <button class="btn btn-outline-primary w-100 py-3 shadow-sm" onclick="openUserLookupModal()">
+                        <i class="fa-solid fa-search me-2"></i>Get User by ID
+                    </button>
                 </div>
             </div>
         </div>
@@ -81,6 +78,33 @@
                 <span class="visually-hidden">Loading...</span>
             </div>
             <p class="mt-2">Loading...</p>
+        </div>
+    </div>
+
+    <!-- User Lookup Modal -->
+    <div class="modal fade" id="userLookupModal" tabindex="-1" aria-labelledby="userLookupModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="userLookupModalLabel">
+                        <i class="fa-solid fa-search me-2 text-primary"></i>Find User by ID
+                    </h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="mb-3">
+                        <label for="modalUserIdInput" class="form-label">User ID</label>
+                        <input type="text" class="form-control" id="modalUserIdInput" placeholder="Enter User ID">
+                        <div id="modalUserIdError" class="text-danger mt-2" style="display: none;"></div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                    <button type="button" class="btn btn-primary" onclick="getUserByIdFromModal()">
+                        <i class="fa-solid fa-search me-1"></i>Search User
+                    </button>
+                </div>
+            </div>
         </div>
     </div>
 
